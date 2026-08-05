@@ -13,732 +13,649 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<body class="app">
+<a class="skip-link" href="#loesung">Zum Inhalt springen</a>
+<div class="scanner" id="scanner" aria-hidden="true"><i></i></div>
 
-<!-- ============================ HEADER ============================ -->
-<header class="site-header">
-  <div class="wrap nav">
-    <a class="brand" href="index.html" aria-label="Startseite">
-      <span class="brand__logos">
-        <img src="assets/logo-mh.png" alt="MH-Invelopment">
-        <span class="brand__sep"></span>
-        <img src="assets/logo-dj.png" alt="D+J">
-      </span>
-      <span class="brand__txt">Kooperation<b>Physical AI</b></span>
-    </a>
-    <nav class="nav__links" id="navlinks" aria-label="Hauptnavigation">
-      <a href="#verbund">Verbund</a>
-      <a href="#loesung">Lösung</a>
-      <a href="#usecases">Use Cases</a>
-      <a href="#technologien">Technologien</a>
-      <a href="#governance">Governance</a>
-      <a href="#qualifizierung">Qualifizierung</a>
-      <a href="#kontakt">Kontakt</a>
-    </nav>
-    <a class="btn btn--primary nav__cta" href="#kontakt">Reality Check <span class="arw">→</span></a>
-    <button class="nav__toggle" id="navtoggle" aria-expanded="false" aria-controls="navlinks">Menü</button>
+<!-- ============================ TOP BAR ============================ -->
+<header class="topbar">
+  <a class="brand" href="#hero" data-nav aria-label="Startseite">
+    <span class="brand__logos">
+      <img src="assets/logo-mh.png" alt="MH-Invelopment">
+      <span class="brand__sep"></span>
+      <img src="assets/logo-dj.png" alt="D+J">
+    </span>
+    <span class="brand__txt">Kooperation<b>Physical AI</b></span>
+  </a>
+  <div class="hud">
+    <button class="navbtn" id="prevBtn" aria-label="Vorheriger Bereich">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+    <span class="hud__count" id="counter" aria-live="polite"><b>01</b> / 12</span>
+    <button class="navbtn" id="nextBtn" aria-label="Nächster Bereich">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <button class="indexbtn" id="indexBtn" aria-haspopup="dialog" aria-expanded="false">
+      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="txt">Index</span>
+    </button>
   </div>
 </header>
 
-<main id="main">
+<!-- ============================ LEFT DOT RAIL ============================ -->
+<nav class="rail" id="rail" aria-label="Bereichsnavigation"></nav>
 
-<!-- ============================ HERO ============================ -->
-<section class="section hero">
-  <div class="wrap">
-    <div class="hero__grid">
-      <div class="hero__copy reveal">
-        <span class="eyebrow">Physical AI · Kooperationslösung</span>
-        <h1>Ihre Unternehmens-KI bekommt <span class="hl">Augen</span>, <span class="hl">Ohren</span> — und dort, wo es sinnvoll ist, einen <span class="hl">Körper</span>.</h1>
-        <p class="hero__sub">Humanoide Robotik, Conversational AI und Computer Vision für Empfang, Messe und Kundenservice. Technologieoffen bewertet, sicher betrieben — und mit einer zertifizierten Qualifizierung für die Menschen, die damit arbeiten.</p>
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="#kontakt">Reality Check anfragen <span class="arw">→</span></a>
-          <a class="btn btn--ghost" href="#technologien">Technologien vergleichen</a>
-        </div>
-      </div>
+<!-- ============================ INDEX OVERLAY ============================ -->
+<div class="indexview" id="indexView" role="dialog" aria-modal="true" aria-label="Alle Bereiche">
+  <button class="indexview__close" id="indexClose" aria-label="Index schließen">&times;</button>
+  <div class="indexgrid">
+    <h2>Bereiche <span>· durchklicken statt scrollen</span></h2>
+    <ol id="indexList"></ol>
+  </div>
+</div>
 
-      <div class="hero__viz reveal">
-        <figure class="viewport">
-          <div class="viewport__inner">
-            <img src="assets/hero-messe.jpg" alt="Humanoider Roboter schüttelt einem Messebesucher die Hand auf der Fachmesse AICon 2026">
-            <span class="viewport__scan" aria-hidden="true"></span>
-            <span class="viewport__mark viewport__mark--tl" aria-hidden="true"></span>
-            <span class="viewport__mark viewport__mark--tr" aria-hidden="true"></span>
-            <span class="viewport__mark viewport__mark--bl" aria-hidden="true"></span>
-            <span class="viewport__mark viewport__mark--br" aria-hidden="true"></span>
-            <div class="viewport__hud">
-              <span class="cap">Humanoider Roboter im Live-Einsatz · Fachmesse 2026</span>
-              <span class="rec">LIVE</span>
-            </div>
+<!-- ============================ STAGE / PANELS ============================ -->
+<main class="stage" id="stage">
+
+  <!-- 01 HERO -->
+  <section class="panel" id="hero" data-title="Start" aria-label="Start">
+    <div class="panel__inner">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow reveal">Physical AI · Kooperationslösung</span>
+          <h1 class="reveal">Ihre Unternehmens-KI bekommt <span class="hl">Augen</span>, <span class="hl">Ohren</span> — und dort, wo es sinnvoll ist, einen <span class="hl">Körper</span>.</h1>
+          <p class="hero__sub reveal">Humanoide Robotik, Conversational AI und Computer Vision für Empfang, Messe und Kundenservice. Technologieoffen bewertet, sicher betrieben — und mit einer zertifizierten Qualifizierung für die Menschen, die damit arbeiten.</p>
+          <div class="hero__cta reveal">
+            <a class="btn btn--primary" href="#kontakt" data-nav>Reality Check anfragen <span class="arw">→</span></a>
+            <a class="btn btn--ghost" href="#technologien" data-nav>Technologien vergleichen</a>
           </div>
-        </figure>
-      </div>
-    </div>
-
-    <ul class="hero__features reveal" data-stagger>
-      <li style="--i:0">Technologieoffen</li>
-      <li style="--i:1">Herstellerunabhängig</li>
-      <li style="--i:2">Vom Use Case zum Pilot</li>
-      <li style="--i:3">Governance &amp; Security by Design</li>
-      <li style="--i:4">AZAV-zertifizierte Qualifizierung</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============================ VERBUND ============================ -->
-<section class="section section--tint" id="verbund">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">Vier Kompetenzen · ein Ansprechpartner</span>
-      <h2>Kein Einzelanbieter. Ein Kooperationsverbund.</h2>
-      <p class="lead">Technologie, Fachnetzwerk, Branchen-Content und zertifizierte Qualifizierung greifen ineinander — von der ersten Bewertung bis zum laufenden Betrieb.</p>
-      <div class="tickrule" aria-hidden="true"></div>
-    </div>
-
-    <div class="grid grid-4" data-stagger>
-      <article class="partner reveal" style="--i:0">
-        <div class="partner__top">
-          <img class="partner__logo" src="assets/logo-mh.png" alt="MH-Invelopment">
-          <span class="partner__role">Technologie &amp; Architektur</span>
+          <ul class="hero__features reveal" data-stagger>
+            <li style="--i:0">Technologieoffen</li>
+            <li style="--i:1">Herstellerunabhängig</li>
+            <li style="--i:2">Vom Use Case zum Pilot</li>
+            <li style="--i:3">Governance &amp; Security</li>
+            <li style="--i:4">AZAV-Qualifizierung</li>
+          </ul>
         </div>
-        <h3>MH-Invelopment</h3>
-        <span class="partner__claim">„We enable your technology transfer“</span>
-        <p>Bewertet herstellerunabhängig, verbindet KI-Agenten mit Unternehmenssystemen und führt vom Use Case zum kontrollierten Pilotbetrieb.</p>
-      </article>
 
-      <article class="partner reveal" style="--i:1">
-        <div class="partner__top">
-          <span class="partner__wordmark">TTX</span>
-          <span class="partner__role">Experten- &amp; Fachnetzwerk</span>
-        </div>
-        <h3>TTX Community</h3>
-        <span class="partner__claim">„Industrial Intelligence“</span>
-        <p>Bringt die Perspektiven zusammen, die eine Physical-AI-Entscheidung braucht: Prozess, IT, Security, Recht und Robotik.</p>
-      </article>
+        <div class="hero__viz reveal">
+          <div class="viewport-wrap" id="tiltWrap">
+            <figure class="viewport" id="tilt">
+              <div class="viewport__inner">
+                <img src="assets/hero-messe.jpg" alt="Humanoider Roboter schüttelt einem Messebesucher die Hand auf der Fachmesse AICon 2026">
+                <span class="viewport__scan" aria-hidden="true"></span>
+                <span class="viewport__mark viewport__mark--tl" aria-hidden="true"></span>
+                <span class="viewport__mark viewport__mark--tr" aria-hidden="true"></span>
+                <span class="viewport__mark viewport__mark--bl" aria-hidden="true"></span>
+                <span class="viewport__mark viewport__mark--br" aria-hidden="true"></span>
 
-      <article class="partner reveal" style="--i:2">
-        <div class="partner__top">
-          <img class="partner__logo" src="assets/logo-dj.png" alt="D+J Bildung">
-          <span class="partner__role">Zertifizierter Bildungsträger</span>
-        </div>
-        <h3>D+J Bildung</h3>
-        <span class="partner__claim">„AZAV-zugelassen“</span>
-        <p>AZAV-zugelassen nach § 178 SGB III. Qualifiziert Mitarbeitende qualitätsgeprüft — mit der Option auf vollständige staatliche Förderung.</p>
-      </article>
+                <button class="hotspot hs1" aria-label="Fähigkeit: Sieht">
+                  <span class="dot"></span>
+                  <span class="hotspot__pop"><span class="k">Sieht</span><h4>Computer Vision</h4><p>Erkennt Menschen und spricht sie aktiv an, liest gezeigte Screenshots, Karten und Dokumente.</p></span>
+                </button>
+                <button class="hotspot hs2" aria-label="Fähigkeit: Hört">
+                  <span class="dot"></span>
+                  <span class="hotspot__pop"><span class="k">Hört</span><h4>Mikrofon-Array</h4><p>Versteht natürliche Sprache — auch im Messelärm und über mehrere Sprachen hinweg.</p></span>
+                </button>
+                <button class="hotspot hs3" aria-label="Fähigkeit: Spricht">
+                  <span class="dot"></span>
+                  <span class="hotspot__pop"><span class="k">Spricht</span><h4>Conversational AI</h4><p>Führt echte, geduldige Dialoge auf Basis freigegebenen Unternehmenswissens.</p></span>
+                </button>
 
-      <article class="partner reveal" style="--i:3">
-        <div class="partner__top">
-          <img class="partner__logo" src="assets/logo-dj.png" alt="D+J Consult">
-          <span class="partner__role">Fachcontent &amp; Dialoge</span>
-        </div>
-        <h3>D+J Consult</h3>
-        <span class="partner__claim">„Ziele erreichen“</span>
-        <p>Pflegt Wissensbasis und Gesprächsführung — mit belastbarem Fachwissen aus Finanz-, Gesundheits- und Logistikbranche.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ AUSGANGSLAGE ============================ -->
-<section class="section" id="ausgangslage">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">Die Ausgangslage</span>
-      <h2>Vier Herausforderungen — gleichzeitig, in jeder Branche.</h2>
-      <p class="lead">Ob Bankfoyer, Klinikempfang oder Logistikzentrale: Es sind immer dieselben vier Muster. Nur die Menschen, die vor der Tür stehen, sind andere.</p>
-    </div>
-
-    <div class="grid grid-2" data-stagger>
-      <article class="chal reveal" style="--i:0">
-        <div class="chal__head"><span class="idx">01</span><h3>Weniger Kontakte, höherer Anspruch</h3></div>
-        <p>Die Frequenz sinkt, aber der persönliche Kontakt bleibt das, was Sie von rein digitalen Anbietern unterscheidet. Jede Begegnung muss zählen.</p>
-        <ul class="chal__ex">
-          <li><span class="tag">Filiale</span>Weniger Besuche, dafür beratungsintensivere Anliegen.</li>
-          <li><span class="tag">Klinik</span>Der erste Eindruck an der Anmeldung prägt die gesamte Behandlung.</li>
-          <li><span class="tag">Logistik</span>Fahrer haben Kontakt zur Pforte — sonst zu niemandem im Werk.</li>
-        </ul>
-      </article>
-
-      <article class="chal reveal" style="--i:1">
-        <div class="chal__head"><span class="idx">02</span><h3>Nachwuchs- &amp; Fachkräftemangel</h3></div>
-        <p>Junge Talente wählen Arbeitgeber, die modern und digital wirken. Auf Job- und Fachmessen konkurrieren alle um dieselbe Generation.</p>
-        <ul class="chal__ex">
-          <li><span class="tag">Filiale</span>Azubi-Gewinnung gegen Direktbanken und Tech-Arbeitgeber.</li>
-          <li><span class="tag">Klinik</span>Pflege- und MTA-Stellen bleiben monatelang unbesetzt.</li>
-          <li><span class="tag">Logistik</span>Fahrer, Staplerfahrer und Disponenten fehlen flächendeckend.</li>
-        </ul>
-      </article>
-
-      <article class="chal reveal" style="--i:2">
-        <div class="chal__head"><span class="idx">03</span><h3>Self-Service- &amp; Digitalisierungsdruck</h3></div>
-        <p>Leistungen wandern auf Terminals, Portale und Apps. Die Migration gelingt nur, wenn Menschen dabei begleitet werden — sonst kommen sie zurück an den Schalter.</p>
-        <ul class="chal__ex">
-          <li><span class="tag">Filiale</span>SB-Terminal statt Kasse — angenommen wird es nur mit Begleitung.</li>
-          <li><span class="tag">Klinik</span>Check-in-Kiosk und Patientenportal überfordern viele Ankommende.</li>
-          <li><span class="tag">Logistik</span>Self-Check-in an der Pforte scheitert an Sprache und Bedienlogik.</li>
-        </ul>
-      </article>
-
-      <article class="chal reveal" style="--i:3">
-        <div class="chal__head"><span class="idx">04</span><h3>Sprachbarrieren &amp; Unsicherheit</h3></div>
-        <p>Ältere Menschen, fremdsprachige Besucher und Erstnutzer brauchen Geduld und Wiederholung — Zeit, die dem Personal an anderer Stelle fehlt.</p>
-        <ul class="chal__ex">
-          <li><span class="tag">Filiale</span>Unsicherheit an Automat und Online-Zugang kostet Servicezeit.</li>
-          <li><span class="tag">Klinik</span>Aufnahme und Wegeleitung in Sprachen, die niemand im Dienst spricht.</li>
-          <li><span class="tag">Logistik</span>Fahrer aus ganz Europa, Anweisungen nur auf Deutsch.</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ DIE LÖSUNG ============================ -->
-<section class="section section--ink" id="loesung">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">Die Lösung</span>
-      <h2>Ein humanoider KI-Roboter. Er sieht, hört und spricht.</h2>
-      <p class="lead" style="color:rgba(240,244,246,.75)">Kein Bildschirm auf Rädern — ein echtes Gegenüber, das Menschen anspricht, versteht und im Dialog weiterhilft. In Ihrem Corporate Design gebrandet, an Ihr freigegebenes Unternehmenswissen angebunden.</p>
-    </div>
-
-    <div class="grid grid-3" data-stagger>
-      <article class="sense reveal" style="--i:0">
-        <svg class="sense__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
-        <span class="sense__k">Sieht</span>
-        <h3>Kameras &amp; Computer Vision</h3>
-        <p>Erkennt Menschen und spricht sie aktiv an, liest gezeigte Screenshots, Karten und Dokumente — und beschreibt Situationen im Raum.</p>
-      </article>
-      <article class="sense reveal" style="--i:1">
-        <svg class="sense__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M5 10v1a7 7 0 0 0 14 0v-1"/><path d="M12 19v3"/></svg>
-        <span class="sense__k">Hört</span>
-        <h3>Mikrofon-Array &amp; Spracherkennung</h3>
-        <p>Versteht natürliche Sprache — auch im Messelärm, in der belebten Empfangshalle und über mehrere Sprachen hinweg.</p>
-      </article>
-      <article class="sense reveal" style="--i:2">
-        <svg class="sense__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
-        <span class="sense__k">Spricht</span>
-        <h3>Conversational AI</h3>
-        <p>Führt echte, geduldige Dialoge, beantwortet Fragen auf Basis freigegebenen Unternehmenswissens und leitet gezielt weiter.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ USE CASES ============================ -->
-<section class="section" id="usecases">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">Fünf Use Cases · im Dialog</span>
-      <h2>So klingt es, wenn Technologie tatsächlich weiterhilft.</h2>
-      <p class="lead">Keine Demo-Skripte. Fünf Situationen aus dem Alltag von Messestand, Empfang, Servicezone, Werkspforte und Klinikfoyer — inklusive der Gespräche, die dabei geführt werden.</p>
-    </div>
-
-    <div class="uc reveal">
-      <div class="uc__tabs" role="tablist" aria-label="Use Cases">
-        <button class="uc__tab" role="tab" aria-selected="true"  aria-controls="uc01" id="tab01">01 — Messe &amp; Recruiting</button>
-        <button class="uc__tab" role="tab" aria-selected="false" aria-controls="uc02" id="tab02">02 — Empfang &amp; Orientierung</button>
-        <button class="uc__tab" role="tab" aria-selected="false" aria-controls="uc03" id="tab03">03 — Service &amp; Lösung</button>
-        <button class="uc__tab" role="tab" aria-selected="false" aria-controls="uc04" id="tab04">04 — Logistik &amp; Pforte</button>
-        <button class="uc__tab" role="tab" aria-selected="false" aria-controls="uc05" id="tab05">05 — Klinik &amp; Aufnahme</button>
-      </div>
-
-      <!-- UC01 full -->
-      <div class="uc__panel is-active" id="uc01" role="tabpanel" aria-labelledby="tab01">
-        <div class="uc__full">
-          <div>
-            <span class="uc__scene">Messe- &amp; Jobmesseauftritt</span>
-            <h3>Der Magnet für Ihren Stand.</h3>
-            <p>Er zieht Besucher an, transportiert Innovationskraft — und spricht auf Jobmessen genau die Generation an, die Sie als Auszubildende und Mitarbeitende gewinnen wollen.</p>
-            <ul class="uc__caps">
-              <li><span class="k">Sieht</span><span>erkennt vorbeigehende Besucher und wendet sich ihnen aktiv zu.</span></li>
-              <li><span class="k">Spricht</span><span>weckt Neugier und führt gezielt zum Stand für Informations- und Beratungsgespräche.</span></li>
-              <li><span class="k">Gewinnt</span><span>Aufmerksamkeit für die Arbeitgebermarke — ideal für Azubi- und Nachwuchsgewinnung.</span></li>
-              <li><span class="k">Ergebnis</span><span>Mehr Standbesucher, mehr qualifizierte Gespräche — und ein starkes Signal als moderner, digitaler Arbeitgeber.</span></li>
-            </ul>
-          </div>
-          <div class="dialog">
-            <div class="dialog__hd">Transkript · Vom Vorbeigehen zum Bewerbungsgespräch</div>
-            <div class="turn turn--bot">
-              <span class="turn__who">Roboter</span>
-              <p>„Guten Tag! Sie schauen so interessiert — darf ich Ihnen in einer Minute zeigen, was uns als Arbeitgeber ausmacht?“<span class="stage">dreht den Kopf zur Besucherin und stellt Blickkontakt her</span></p>
-            </div>
-            <div class="turn turn--human">
-              <span class="turn__who">Besucherin</span>
-              <p>„Klar — aber ehrlich gesagt weiß ich nicht, ob eine Bank überhaupt zu mir passt.“</p>
-            </div>
-            <div class="turn turn--bot">
-              <span class="turn__who">Roboter</span>
-              <p>„Das höre ich oft. Sagen Sie mir: Arbeiten Sie lieber mit Menschen oder mit Zahlen?“<span class="stage">neigt den Kopf und hört aufmerksam zu</span></p>
-            </div>
-            <div class="turn turn--human">
-              <span class="turn__who">Besucherin</span>
-              <p>„Auf jeden Fall mit Menschen.“</p>
-            </div>
-            <div class="turn turn--bot">
-              <span class="turn__who">Roboter</span>
-              <p>„Perfekt — dann ist die Beratung genau Ihr Feld. Kommen Sie mit an den Stand, meine Kollegin zeigt Ihnen die Ausbildungswege und Sie können direkt Fragen stellen.“<span class="stage">dreht sich zum Stand, lädt mit einer Geste ein und meldet den Kontakt an das Standteam</span></p>
-            </div>
+                <div class="viewport__hud">
+                  <span class="cap">Humanoider Roboter im Live-Einsatz · Fachmesse 2026</span>
+                  <span class="rec">LIVE</span>
+                </div>
+              </div>
+            </figure>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- UC02-05 compact -->
-      <div class="uc__panel" id="uc02" role="tabpanel" aria-labelledby="tab02" hidden>
-        <div class="ucmini">
-          <span class="scene">Empfang &amp; Besucherservice</span>
-          <h4>Orientierung ohne Wartezeit.</h4>
-          <p>Besucher werden begrüßt, ihr Anliegen wird aufgenommen, der zuständige Ansprechpartner benachrichtigt und der Weg erklärt — mehrsprachig und ohne Wartezeit an der Anmeldung.</p>
-          <div class="uc__caps" style="margin-top:14px">
-            <ul style="list-style:none;display:grid;gap:8px;padding:0">
-              <li style="font-size:14.5px;color:var(--ink-2)"><b>Sieht</b> — erkennt ankommende Besucher und wendet sich ihnen zu.</li>
-              <li style="font-size:14.5px;color:var(--ink-2)"><b>Spricht</b> — nimmt das Anliegen auf und benachrichtigt den Ansprechpartner.</li>
-            </ul>
-          </div>
-        </div>
+  <!-- 02 VERBUND -->
+  <section class="panel" id="verbund" data-title="Verbund" aria-label="Kooperationsverbund">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">Vier Kompetenzen · ein Ansprechpartner</span>
+        <h2>Kein Einzelanbieter. Ein Kooperationsverbund.</h2>
+        <p class="lead">Technologie, Fachnetzwerk, Branchen-Content und zertifizierte Qualifizierung greifen ineinander — von der ersten Bewertung bis zum laufenden Betrieb.</p>
+        <div class="tickrule" aria-hidden="true"></div>
       </div>
-
-      <div class="uc__panel" id="uc03" role="tabpanel" aria-labelledby="tab03" hidden>
-        <div class="ucmini">
-          <span class="scene">Service &amp; Lösung</span>
-          <h4>Begleitet zur Selbstständigkeit.</h4>
-          <p>In der Servicezone werden einfache Anliegen direkt gelöst und die Nutzung von Terminals begleitet — bis zur gezielten Übergabe an die persönliche Beratung, wenn es komplexer wird.</p>
-        </div>
-      </div>
-
-      <div class="uc__panel" id="uc04" role="tabpanel" aria-labelledby="tab04" hidden>
-        <div class="ucmini">
-          <span class="scene">Logistik &amp; Pforte</span>
-          <h4>Abfertigung, die jede Sprache spricht.</h4>
-          <p>An der Werkspforte werden Fahrer und Besucher abgefertigt, die Werksunterweisung erklärt und der Materialfluss unterstützt — mehrsprachig, auch wenn niemand im Dienst die Sprache des Fahrers spricht.</p>
-        </div>
-      </div>
-
-      <div class="uc__panel" id="uc05" role="tabpanel" aria-labelledby="tab05" hidden>
-        <div class="ucmini">
-          <span class="scene">Klinik &amp; Aufnahme</span>
-          <h4>Ein ruhiger erster Eindruck.</h4>
-          <p>Im Klinikfoyer werden Patienten und Besucher geleitet, Aufnahmeprozesse erklärt und mehrsprachige Auskunft gegeben — das entlastet die Anmeldung und prägt einen ruhigen ersten Eindruck.</p>
-        </div>
-      </div>
-      <p class="form__note" style="margin-top:16px">Use Case 01 ist vollständig als Dialog ausgearbeitet. Die Szenen 02–05 sind hier als Kurzprofile dargestellt; die ausgeschriebenen Gesprächsverläufe entstehen im Reality Check entlang Ihrer konkreten Prozesse.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ EINSATZFELDER ============================ -->
-<section class="section section--tint" id="einsatzfelder">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">Einsatzfelder</span>
-      <h2>Eine Intelligenzschicht. Branchenoffen im Einsatz.</h2>
-      <p class="lead">Wo Menschen begrüßt, informiert, geschult oder begleitet werden, entsteht derselbe Nutzen — unabhängig von der Branche. Die folgenden Beispiele zeigen, wie das konkret aussieht.</p>
-    </div>
-
-    <div class="grid grid-3" data-stagger>
-      <article class="card field reveal" style="--i:0"><h3>Messeauftritte</h3><p>Aufmerksamkeit am Stand, aktive Ansprache vorbeigehender Besucher, qualifizierte Weiterleitung ans Standteam — plus messbare Kontaktzahlen.</p><div class="tags"><span class="tag-chip">Humanoid</span><span class="tag-chip">Display</span><span class="tag-chip">Terminal</span></div></article>
-      <article class="card field reveal" style="--i:1"><h3>Interne Veranstaltungen</h3><p>Townhalls, Kick-offs, Innovationstage und Führungskräftetagungen: als Gastgeber, Moderationshilfe und begehbares Beispiel für die eigene KI-Strategie.</p><div class="tags"><span class="tag-chip">Humanoid</span><span class="tag-chip">Meeting-Agent</span></div></article>
-      <article class="card field reveal" style="--i:2"><h3>Empfang &amp; Besucherservice</h3><p>Besucher begrüßen, Anliegen aufnehmen, Ansprechpartner benachrichtigen, Wege erklären — mehrsprachig und ohne Wartezeit.</p><div class="tags"><span class="tag-chip">Humanoid</span><span class="tag-chip">Display</span><span class="tag-chip">Terminal</span></div></article>
-      <article class="card field reveal" style="--i:3"><h3>Filiale &amp; Kundenservice</h3><p>Beispiel Finanzwirtschaft: Orientierung im Foyer, begleitete Terminal-Nutzung, Lösung einfacher Serviceanliegen, Übergabe an die Beratung.</p><div class="tags"><span class="tag-chip">Humanoid</span><span class="tag-chip">SB-Terminal</span></div></article>
-      <article class="card field reveal" style="--i:4"><h3>Gesundheitswesen</h3><p>Beispiel Gesundheitswesen: Patienten- und Besucherleitung, Aufnahmeprozesse, mehrsprachige Auskunft, Entlastung an der Anmeldung.</p><div class="tags"><span class="tag-chip">Display</span><span class="tag-chip">Terminal</span><span class="tag-chip">Humanoid</span></div></article>
-      <article class="card field reveal" style="--i:5"><h3>Logistik &amp; Industrie</h3><p>Beispiel Logistik: Fahrer- und Besucherabfertigung an der Pforte, Werksunterweisung, Materialfluss, mobile Datenerfassung.</p><div class="tags"><span class="tag-chip">Terminal</span><span class="tag-chip">AMR</span><span class="tag-chip">Sensorik</span></div></article>
-      <article class="card field reveal" style="--i:6"><h3>Wissen &amp; Schulung</h3><p>Produkte, Arbeitsanweisungen und Prozesse auf Basis freigegebenen Unternehmenswissens erklären — auf Abruf, mehrsprachig, jederzeit gleich geduldig.</p><div class="tags"><span class="tag-chip">Web</span><span class="tag-chip">Display</span><span class="tag-chip">Humanoid</span></div></article>
-      <article class="card field reveal" style="--i:7"><h3>Prozessassistenz &amp; Qualität</h3><p>Definierte Abläufe beobachten, Informationen erfassen, auf Abweichungen hinweisen und Mitarbeitende bei Entscheidungen unterstützen.</p><div class="tags"><span class="tag-chip">Kamera</span><span class="tag-chip">Sensorik</span><span class="tag-chip">AMR</span></div></article>
-      <article class="card field reveal" style="--i:8"><h3>Inspektion &amp; Facility</h3><p>Orte und Anlagen erreichen, Bild- und Sensordaten aufnehmen, Auffälligkeiten dokumentieren — bei klar definierter Zweckbindung.</p><div class="tags"><span class="tag-chip">Quadruped</span><span class="tag-chip">AMR</span><span class="tag-chip">Servicerobotik</span></div></article>
-    </div>
-
-    <div class="branchrow reveal">
-      <span class="lbl">Erprobtes Branchen-Know-how aus laufenden und abgeschlossenen Projekten:</span>
-      <div class="items">
-        <span>Finanzwirtschaft</span><span>Gesundheitswesen</span><span>Logistik &amp; Distribution</span><span>Produktion</span><span>Handel &amp; E-Commerce</span><span>Field Operations</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ TECHNOLOGIEVERGLEICH ============================ -->
-<section class="section" id="technologien">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">Technologievergleich</span>
-      <h2>Braucht Ihre KI wirklich einen humanoiden Körper?</h2>
-      <p class="lead">Vielleicht. Vielleicht genügt ein intelligentes Display. Für andere Prozesse ist eine Kamera, ein AMR oder ein vierbeiniger Roboter die wirtschaftlich bessere Lösung. Die Technologie folgt dem Prozess — nicht umgekehrt.</p>
-    </div>
-
-    <div class="grid grid-3" data-stagger>
-      <article class="tech reveal" style="--i:0">
-        <div class="tech__head"><span class="idx">01</span><h3>Display &amp; Terminal</h3></div>
-        <p class="tech__lead">Die schnellste Form, eine KI physisch verfügbar zu machen: verlässlich, wartungsarm, in nahezu jedem Raum einsetzbar.</p>
-        <div class="tech__spec">
-          <div class="row"><span class="k">Einsatzfelder</span><span class="v">Empfang, Beratung, Self-Service, Schulung</span></div>
-          <div class="row"><span class="k">Stärken</span><span class="v">Schnell einsatzbereit, zuverlässig, vergleichsweise günstig, einfache Integration</span></div>
-          <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Keine Mobilität, geringere physische Präsenz, weniger Aufmerksamkeit</span></div>
-        </div>
-        <p class="tech__ex"><span class="k">Beispiel</span>Ein Klinik-Check-in erklärt Aufnahmeschritte mehrsprachig am Kiosk — statt an der Anmeldung nachzufragen.</p>
-      </article>
-
-      <article class="tech reveal" style="--i:1">
-        <div class="tech__head"><span class="idx">02</span><h3>Kamera &amp; Sensorik</h3></div>
-        <p class="tech__lead">Erfasst kontinuierlich, was im Prozess tatsächlich passiert — ohne dass jemand etwas eingeben muss.</p>
-        <div class="tech__spec">
-          <div class="row"><span class="k">Einsatzfelder</span><span class="v">Prozessbeobachtung, Dokumentation, Qualitätshinweise</span></div>
-          <div class="row"><span class="k">Stärken</span><span class="v">Kontinuierliche Datenerfassung, erkennt Situationen und Abweichungen früh</span></div>
-          <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Datenschutz, klare Beobachtungsgrenzen, Datenqualität, Zweckbindung</span></div>
-        </div>
-        <p class="tech__ex"><span class="k">Beispiel</span>Im Wareneingang wird erkannt, wenn Paletten falsch gestapelt sind — der Hinweis geht an den Mitarbeiter, nicht ins Archiv.</p>
-      </article>
-
-      <article class="tech reveal" style="--i:2">
-        <div class="tech__head"><span class="idx">03</span><h3>AMR · mobile Plattform</h3></div>
-        <p class="tech__lead">Bringt Intelligenz dorthin, wo Material und Menschen sich bewegen — mit messbarem Prozessnutzen statt Showeffekt.</p>
-        <div class="tech__spec">
-          <div class="row"><span class="k">Einsatzfelder</span><span class="v">Logistik, Materialtransport, mobile Information</span></div>
-          <div class="row"><span class="k">Stärken</span><span class="v">Verbindet Mobilität mit belastbarem Business Case, gut skalierbar</span></div>
-          <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Navigation, Infrastruktur, definierte Sicherheitszonen</span></div>
-        </div>
-        <p class="tech__ex"><span class="k">Beispiel</span>Im Klinikum transportiert die Plattform Proben und Verbrauchsmaterial zwischen Station und Labor — nachts wie tagsüber.</p>
-      </article>
-
-      <article class="tech reveal" style="--i:3">
-        <div class="tech__head"><span class="idx">04</span><h3>Vierbeiniger Roboter</h3></div>
-        <p class="tech__lead">Erreicht Orte, die für Räder unzugänglich sind — Treppen, Außenbereiche, enge oder unebene Anlagen.</p>
-        <div class="tech__spec">
-          <div class="row"><span class="k">Einsatzfelder</span><span class="v">Inspektion, Außenbereiche, schwer zugängliche Orte</span></div>
-          <div class="row"><span class="k">Stärken</span><span class="v">Hohe Beweglichkeit, mobile Sensorik, robuste Datenerfassung im Feld</span></div>
-          <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Spezialisierter Einsatz, Transportfähigkeit, Integration, Betriebskosten</span></div>
-        </div>
-        <p class="tech__ex"><span class="k">Beispiel</span>Auf dem Werksgelände läuft die Nachtrunde selbstständig: Wärmebild an kritischen Anlagen, Auffälligkeiten am Morgen im Bericht.</p>
-      </article>
-
-      <article class="tech tech--hero reveal" style="--i:4">
-        <div class="tech__head"><span class="idx">05</span><h3>Humanoider Roboter</h3></div>
-        <p class="tech__lead">Ein echtes Gegenüber. Überall dort stark, wo Aufmerksamkeit, Ansprache und menschenähnliche Interaktion den Unterschied machen.</p>
-        <div class="tech__spec">
-          <div class="row"><span class="k">Einsatzfelder</span><span class="v">Besucherempfang, Messe, Service, Training, Assistenz</span></div>
-          <div class="row"><span class="k">Stärken</span><span class="v">Hohe Aufmerksamkeit, Gestik und Blickkontakt, aktive Ansprache, starkes Imagesignal</span></div>
-          <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Kosten, Belastbarkeit im Dauerbetrieb, physische Sicherheit, klare Einsatzzonen</span></div>
-        </div>
-        <p class="tech__ex"><span class="k">Beispiel</span>Am Messestand spricht er vorbeigehende Besucher an und übergibt qualifizierte Kontakte direkt an das Standteam.</p>
-      </article>
-
-      <article class="tech reveal" style="--i:5">
-        <div class="tech__head"><span class="idx">06</span><h3>Reinigungs- &amp; Servicerobotik</h3></div>
-        <p class="tech__lead">Erfüllt eine produktive Hauptaufgabe und liefert nebenbei Daten über Flächen, Auslastung und Betriebszustände.</p>
-        <div class="tech__spec">
-          <div class="row"><span class="k">Einsatzfelder</span><span class="v">Flächenbetrieb, Facility Services, Zustandserfassung</span></div>
-          <div class="row"><span class="k">Stärken</span><span class="v">Verbindet produktive Arbeit mit kontinuierlicher mobiler Datenerfassung</span></div>
-          <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Zusatzdaten benötigen klare Zweckbindung, Zugriffsrechte und Löschkonzept</span></div>
-        </div>
-        <p class="tech__ex"><span class="k">Beispiel</span>Die Reinigung im Foyer liefert zugleich Belegungsdaten — die Taktung folgt der tatsächlichen Nutzung statt dem Wochenplan.</p>
-      </article>
-    </div>
-
-    <p class="tech__closing reveal">Wo ein Display denselben Nutzen erzeugt wie ein Roboter, sollte das Display eingesetzt werden. Wo Mobilität, Wahrnehmung oder physische Präsenz einen messbaren Mehrwert schaffen, wird Robotik relevant.</p>
-  </div>
-</section>
-
-<!-- ============================ ARCHITEKTUR ============================ -->
-<section class="section section--ink" id="architektur">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">Architektur</span>
-      <h2>Eine KI-Basis — viele physische Schnittstellen.</h2>
-      <p class="lead" style="color:rgba(240,244,246,.75)">Wissen und Integrationen gehören nicht an einen einzelnen Roboter gebunden. Dieselbe Basis bedient Telefon, Web, Display und Robotik — das senkt die Herstellerabhängigkeit und macht den Ausbau planbar.</p>
-    </div>
-
-    <div class="stack reveal">
-      <div class="layer">
-        <span class="layer__n">Schicht 03 · Schnittstellen</span>
-        <h3>Physische &amp; digitale Schnittstellen</h3>
-        <div class="chips"><span>Telefon</span><span>Web</span><span>Meeting</span><span>Display</span><span>Kamera</span><span>AMR</span><span>Quadruped</span><span>Humanoid</span></div>
-      </div>
-      <div class="layer__flow" aria-hidden="true">▲ ▼</div>
-      <div class="layer">
-        <span class="layer__n">Schicht 02 · Intelligenz</span>
-        <h3>KI-Agenten &amp; Conversational AI</h3>
-        <div class="chips"><span>Dialog</span><span>Kontext</span><span>Berechtigungen</span><span>Orchestrierung</span><span>Dokumentation</span></div>
-      </div>
-      <div class="layer__flow" aria-hidden="true">▲ ▼</div>
-      <div class="layer">
-        <span class="layer__n">Schicht 01 · Fundament</span>
-        <h3>Unternehmenswissen &amp; Backend-Systeme</h3>
-        <div class="chips"><span>CRM</span><span>ERP</span><span>WMS</span><span>Dokumente</span><span>Datenbanken</span><span>Prozesslogik</span></div>
-      </div>
-    </div>
-
-    <div class="archvals reveal">
-      <span>Wiederverwendung von Wissen</span>
-      <span>Weniger Herstellerabhängigkeit</span>
-      <span>Schrittweiser Ausbau</span>
-      <span>Einheitliche Governance</span>
-      <span>Skalierbar auf weitere Standorte</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ GOVERNANCE ============================ -->
-<section class="section section--tint" id="governance">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">Governance · Datenschutz · Security</span>
-      <h2>Entscheidend ist nicht nur, was die KI kann — sondern was sie darf.</h2>
-      <p class="lead">Physical AI verarbeitet Audio-, Video-, Standort- und Prozessdaten und kann im Einzelfall physische Aktionen auslösen. Deshalb steht am Anfang ein kombiniertes Rechte- und Steuerungsmodell — nicht am Ende.</p>
-    </div>
-
-    <div class="gov4 reveal" data-stagger>
-      <div class="lvl" style="--i:0"><span class="k">Mensch</span><p>Welcher Mitarbeiter, Kunde oder Besucher darf welche Funktion nutzen?</p></div>
-      <div class="lvl" style="--i:1"><span class="k">KI-Agent</span><p>Auf welches Wissen und welche Systeme darf der Agent zugreifen?</p></div>
-      <div class="lvl" style="--i:2"><span class="k">Gerät</span><p>Darf dieses Display, diese Kamera oder dieser Roboter auf die jeweiligen Daten zugreifen?</p></div>
-      <div class="lvl" style="--i:3"><span class="k">Situation</span><p>Ist der Zugriff nur an einem Ort, zu einer Zeit oder nach Freigabe erlaubt?</p></div>
-    </div>
-
-    <div class="autotable reveal">
-      <table>
-        <caption>Autonomie mit klaren Grenzen</caption>
-        <thead>
-          <tr><th scope="col">Stufe</th><th scope="col">Bezeichnung</th><th scope="col">Beschreibung</th><th scope="col">Beispiel</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="lvlnum">1</td><td class="name">Informieren</td><td>Beantwortet Fragen und stellt freigegebene Informationen bereit.</td><td class="ex">Besucherinformation</td></tr>
-          <tr><td class="lvlnum">2</td><td class="name">Empfehlen</td><td>Erkennt eine Situation und schlägt eine Aktion vor.</td><td class="ex">Qualitätshinweis</td></tr>
-          <tr><td class="lvlnum">3</td><td class="name">Vorbereiten</td><td>Bereitet einen Vorgang vor; ein Mensch bestätigt ihn.</td><td class="ex">CRM-Vorgang, Bestellung</td></tr>
-          <tr><td class="lvlnum">4</td><td class="name">Ausführen</td><td>Führt klar begrenzte, freigegebene Aktionen selbstständig aus.</td><td class="ex">Benachrichtigung, Transportauftrag</td></tr>
-          <tr><td class="lvlnum">5</td><td class="name">Physisch agieren</td><td>Bewegt sich oder interagiert kontrolliert mit der Umgebung.</td><td class="ex">Inspektions- oder Assistenzaufgabe</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="autonote reveal">Der geeignete Autonomiegrad wird anhand von Nutzen, Datenzugriff, Fehlerfolgen und erforderlicher menschlicher Aufsicht festgelegt — nicht anhand des technisch Machbaren.</p>
-
-    <div class="checks reveal">
-      <div class="checkcard">
-        <h3><span class="idx">A</span> Daten &amp; Recht</h3>
-        <ul>
-          <li>Nur Daten erfassen, die der Use Case tatsächlich benötigt</li>
-          <li>Edge- bzw. lokale Verarbeitung prüfen</li>
-          <li>Aufbewahrungs- und Löschfristen definieren</li>
-          <li>Erkennung und Identifizierung von Personen klar unterscheiden</li>
-          <li>Besucher und Mitarbeitende transparent informieren</li>
-          <li>DSGVO- und AI-Act-konformer Betrieb, dokumentiert</li>
-        </ul>
-      </div>
-      <div class="checkcard">
-        <h3><span class="idx">B</span> Technik &amp; Physik</h3>
-        <ul>
-          <li>Rollenbasierte Zugriffsrechte, Trennung von Lese- und Schreibrechten</li>
-          <li>Schutz vor Prompt Injection und manipulierten Eingaben</li>
-          <li>Geprüfte Wissensquellen und definierte Fallbacks</li>
-          <li>Definierte Einsatz- und Sperrzonen, Kollisionsschutz</li>
-          <li>Not-Aus, manueller Eingriff, sicherer Zustand bei Ausfall</li>
-          <li>Regeln für beaufsichtigten und unbeaufsichtigten Betrieb</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ QUALIFIZIERUNG ============================ -->
-<section class="section" id="qualifizierung">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">Qualifizierung · AZAV-zertifiziert</span>
-      <h2>Technologie wirkt erst, wenn Menschen sie sicher beherrschen.</h2>
-      <p class="lead">Jede Einführung enthält eine Aus- und Weiterbildungskomponente. Durchgeführt von D+J Bildung — einem nach AZAV staatlich zugelassenen Bildungsträger, dessen Qualität durch eine fachkundige Stelle geprüft und regelmäßig auditiert wird.</p>
-    </div>
-
-    <div class="grid grid-3" data-stagger>
-      <article class="prog reveal" style="--i:0"><h3>Arbeit 4.0 — Zukunft der Arbeit</h3><p>Zertifizierte Weiterbildung in 12 Modulen als Change- und Akzeptanzprogramm — mit der Möglichkeit vollständiger staatlicher Förderung. Nimmt Veränderungsängste, baut Kompetenz auf und sichert die langfristige Anwendbarkeit am Arbeitsplatz.</p></article>
-      <article class="prog reveal" style="--i:1"><span class="badge">Verpflichtend</span><h3>EU-AI-Act-Grundschulung 4.0</h3><p>Seit Februar 2025 ist die Schulung verpflichtend für alle Mitarbeitenden, die im Unternehmen mit KI arbeiten. Art. 4 EU-AI-Act fordert nachweisbare KI-Kompetenz — wir vermitteln sie und dokumentieren den Nachweis prüffest.</p></article>
-      <article class="prog reveal" style="--i:2"><h3>Betreiber- &amp; Anwenderschulung</h3><p>Umgang mit dem Roboter im Tagesbetrieb: Ansprache, Übergabe an Menschen, Eskalation, Störungsfälle, Not-Aus und Human Oversight.</p></article>
-      <article class="prog reveal" style="--i:3"><h3>Key-User- &amp; Multiplikatorenprogramm</h3><p>Eigene Multiplikatoren, die Dialoge mitgestalten, Feedback strukturieren und den Rollout in weitere Standorte tragen.</p></article>
-      <article class="prog reveal" style="--i:4"><h3>KI für Führungskräfte 4.0</h3><p>Für Führungskräfte: Strategie, Wirtschaftlichkeit und Verantwortung beim Einsatz von KI und Robotik im eigenen Unternehmen.</p></article>
-    </div>
-
-    <div class="certbox reveal">
-      <div class="certbox__hd">D+J Bildung — staatlich zugelassener Bildungsträger</div>
-      <div class="certbox__body">
-        <dl>
-          <div class="row"><dt>Zulassung</dt><dd>AZAV nach § 178 SGB III</dd></div>
-          <div class="row"><dt>Träger-Nr.</dt><dd>ZG4021</dd></div>
-        </dl>
-        <dl>
-          <div class="row"><dt>Fachkundige Stelle</dt><dd>CERTURIA Certification Germany GmbH</dd></div>
-          <div class="row"><dt>Gültig bis</dt><dd>12.05.2030</dd></div>
-        </dl>
-        <div class="row row--wide"><dt>Qualität</dt><dd>Mehrstufiges Auditverfahren, dokumentierte Dozentenqualifikation, standardisierte Evaluation, regelmäßige Überwachungsaudits</dd></div>
-      </div>
-    </div>
-
-    <div class="funding reveal" data-stagger>
-      <div class="fund" style="--i:0"><span class="par">§ 82 SGB III</span><h4>Qualifizierungschancengesetz</h4><p>Förderung für Beschäftigte — je nach Betriebsgröße bis zur vollständigen Kostenübernahme inklusive Zuschuss zum Arbeitsentgelt.</p></div>
-      <div class="fund" style="--i:1"><span class="par">§ 81 SGB III</span><h4>Bildungsgutschein</h4><p>Bildungsgutschein für Arbeitssuchende — vollständige Übernahme der Weiterbildungskosten möglich.</p></div>
-      <div class="fund" style="--i:2"><span class="par">§ 45 SGB III</span><h4>AVGS</h4><p>AVGS für Aktivierung und Vermittlung — passgenaue Maßnahmen ohne Eigenanteil.</p></div>
-    </div>
-    <p class="fundnote reveal">Die konkrete Förderhöhe hängt von Betriebsgröße, Zielgruppe und Maßnahme ab. Wir prüfen die Fördermöglichkeiten vor Angebotsabgabe und übernehmen die Abstimmung mit der Agentur für Arbeit.</p>
-  </div>
-</section>
-
-<!-- ============================ SO STARTEN WIR ============================ -->
-<section class="section section--tint" id="prozess">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">So starten wir</span>
-      <h2>Von der Technologiebegeisterung zur belastbaren Entscheidung.</h2>
-      <p class="lead">Am Anfang steht kein Kaufvertrag, sondern ein Reality Check: Wir prüfen anhand Ihrer Prozesse, welche Kombination aus KI-Agenten, Wissen, Computer Vision und physischer Technologie sinnvoll, sicher und wirtschaftlich ist.</p>
-    </div>
-
-    <div class="steps reveal" data-stagger>
-      <div class="step" style="--i:0">
-        <span class="step__n">01</span><h3>Reality Check</h3>
-        <p>Prozess- und Zielaufnahme, Live-Demonstration, technologieoffener Vergleich, Bewertung von drei bis fünf Use Cases, Kosten- und Risikokorridor, kompaktes Ergebnisdokument.</p>
-        <ul class="step__crit">
-          <li>KI-Reifegrad der Organisation</li>
-          <li>Ausbildungsstand der Mitarbeitenden</li>
-          <li>Regulatorische Rahmenbedingungen</li>
-          <li>Daten- und Systemlandschaft</li>
-        </ul>
-      </div>
-      <div class="step" style="--i:1"><span class="step__n">02</span><h3>Pilot</h3><p>Testeinsatz auf einer Messe, im Empfang oder in der Servicezone. Ein priorisierter Prozess, definierte KPIs, klare Autonomiestufe.</p></div>
-      <div class="step" style="--i:2"><span class="step__n">03</span><h3>Einführung</h3><p>Branding, Dialoge und Prozesse auf Ihr Haus zugeschnitten — begleitet von der zertifizierten Qualifizierung der Mitarbeitenden.</p></div>
-      <div class="step" style="--i:3"><span class="step__n">04</span><h3>Betrieb &amp; Ausbau</h3><p>Laufende Komplettbetreuung aus einer Hand. Neue Use Cases, weitere Standorte, wachsende Fähigkeiten.</p></div>
-    </div>
-
-    <div class="serviced reveal">
-      <div class="svc">
-        <h3>Technik — Rundum-Betrieb</h3>
-        <ul>
-          <li>Bereitstellung, Aufbau &amp; Inbetriebnahme vor Ort</li>
-          <li>Wartung, Software-Updates &amp; Sicherheits-Patches</li>
-          <li>Monitoring, Ausfallsicherheit &amp; schneller Vor-Ort-Service</li>
-          <li>DSGVO- und AI-Act-konformer, sicherer Betrieb</li>
-        </ul>
-      </div>
-      <div class="svc">
-        <h3>Inhalt — Wissen &amp; Dialoge</h3>
-        <ul>
-          <li>Laufende Pflege der Dialoge &amp; Antworten</li>
-          <li>Fachwissen aus Ihrer Branche und Ihrem Sektor eingepflegt</li>
-          <li>Aus- und Weiterbildung der Mitarbeitenden, zertifiziert begleitet</li>
-          <li>Aktualisierung bei neuen Produkten &amp; Prozessen</li>
-          <li>Saisonale Kampagnen &amp; Messe-Skripte auf Abruf</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="invest reveal">
-      <div class="r">
-        <span class="eyebrow" style="color:var(--signal)">Investition</span>
-        <h3>Individuell kalkuliert — je Projekt.</h3>
-        <p>Umfang, Hardware, Integrationstiefe, Betriebsmodell und Qualifizierung unterscheiden sich pro Haus. Sie erhalten ein Angebot, das auf Ihren Prozessen beruht — inklusive geprüfter Fördermöglichkeiten für den Weiterbildungsanteil.</p>
-      </div>
-      <a class="btn btn--primary" href="#kontakt">Angebot anfragen <span class="arw">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ KONTAKT ============================ -->
-<section class="section" id="kontakt">
-  <div class="wrap">
-    <div class="sect-head reveal">
-      <span class="eyebrow">Der nächste Schritt</span>
-      <h2>Welcher Prozess sollte als Erster Augen, Ohren oder Mobilität bekommen?</h2>
-      <p class="lead">Schreiben Sie uns eine Zeile zu Ihrem Vorhaben — oder rufen Sie direkt an. Wir melden uns kurzfristig mit einem Terminvorschlag.</p>
-    </div>
-
-    <div class="contact__grid">
-      <!-- data-endpoint bleibt leer: Solange kein Server-Dienst (z. B. Formspree) hinterlegt ist,
-           öffnet das Formular beim Absenden automatisch das E-Mail-Programm mit vorausgefüllter
-           Nachricht an info@dj-bildung.de. Für einen echten Endpunkt hier die URL eintragen. -->
-      <form class="form reveal" id="contactForm" data-endpoint="" data-mailto="info@dj-bildung.de" novalidate>
-        <div class="field-row two">
-          <div>
-            <label for="f-name">Name <span class="req">*</span></label>
-            <input id="f-name" name="name" type="text" required autocomplete="name">
-          </div>
-          <div>
-            <label for="f-org">Organisation</label>
-            <input id="f-org" name="organisation" type="text" autocomplete="organization">
-          </div>
-        </div>
-        <div class="field-row two">
-          <div>
-            <label for="f-mail">E-Mail <span class="req">*</span></label>
-            <input id="f-mail" name="email" type="email" required autocomplete="email">
-          </div>
-          <div>
-            <label for="f-tel">Telefon <span style="text-transform:none;color:var(--ink-3)">(optional)</span></label>
-            <input id="f-tel" name="telefon" type="tel" autocomplete="tel">
-          </div>
-        </div>
-        <div class="field-row">
-          <label for="f-int">Interesse</label>
-          <select id="f-int" name="interesse">
-            <option>Physical AI Reality Check</option>
-            <option>Pilot-Einsatz Messe / Veranstaltung</option>
-            <option>Empfang &amp; Besucherservice</option>
-            <option>Lösungen in der Finanzbranche</option>
-            <option>Lösungen für die Logistikbranche</option>
-            <option>Lösungen in der Medizinbranche</option>
-            <option>Qualifizierung &amp; Förderung</option>
-            <option>Erstgespräch, noch offen</option>
-          </select>
-        </div>
-        <div class="field-row">
-          <label for="f-msg">Ihr Vorhaben</label>
-          <textarea id="f-msg" name="vorhaben" placeholder="Ein, zwei Sätze genügen."></textarea>
-        </div>
-        <p class="form__note">Ihre Angaben werden ausschließlich zur Bearbeitung dieser Anfrage verwendet und nicht an Dritte weitergegeben.</p>
-        <div>
-          <button class="btn btn--primary" type="submit">Anfrage senden <span class="arw">→</span></button>
-          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
-        </div>
-      </form>
-
-      <div class="contact__cards reveal">
-        <article class="contactcard">
-          <span class="role">Ansprechpartner · Content &amp; Bildung</span>
-          <h3>Jürgen Nedvidek</h3>
-          <p class="org">D+J Consult · D+J Bildung</p>
-          <dl>
-            <div class="row"><dt>Telefon</dt><dd><a href="tel:+4915203081715">+49 152 03081715</a></dd></div>
-            <div class="row"><dt>E-Mail</dt><dd><a href="mailto:info@dj-bildung.de">info@dj-bildung.de</a></dd></div>
-            <div class="row"><dt>Web</dt><dd><a href="https://dj-bildung.com" target="_blank" rel="noopener">dj-bildung.com</a></dd></div>
-          </dl>
+      <div class="grid grid-4" data-stagger>
+        <article class="partner reveal" style="--i:0">
+          <div class="partner__top"><img class="partner__logo" src="assets/logo-mh.png" alt="MH-Invelopment"><span class="partner__role">Technologie &amp; Architektur</span></div>
+          <h3>MH-Invelopment</h3><span class="partner__claim">„We enable your technology transfer“</span>
+          <p>Bewertet herstellerunabhängig, verbindet KI-Agenten mit Unternehmenssystemen und führt vom Use Case zum kontrollierten Pilotbetrieb.</p>
         </article>
-        <article class="contactcard">
-          <span class="role">Ansprechpartner · Technologie</span>
-          <h3>Manuel Haupt</h3>
-          <p class="org">MH-Invelopment GmbH · Heidelberg | Germany</p>
-          <dl>
-            <div class="row"><dt>E-Mail</dt><dd><a href="mailto:info@mh-invelopment.com">info@mh-invelopment.com</a></dd></div>
-            <div class="row"><dt>Web</dt><dd><a href="https://mh-invelopment.com" target="_blank" rel="noopener">mh-invelopment.com</a></dd></div>
-          </dl>
-          <a class="btn btn--ghost booklink" href="https://outlook.office.com/bookwithme/user/e893459df0504fc1b5356d3e51290679@mh-invelopment.com?anonymous&amp;ep=plink" target="_blank" rel="noopener">Intro-Call buchen <span class="arw">→</span></a>
+        <article class="partner reveal" style="--i:1">
+          <div class="partner__top"><span class="partner__wordmark">TTX</span><span class="partner__role">Experten- &amp; Fachnetzwerk</span></div>
+          <h3>TTX Community</h3><span class="partner__claim">„Industrial Intelligence“</span>
+          <p>Bringt die Perspektiven zusammen, die eine Physical-AI-Entscheidung braucht: Prozess, IT, Security, Recht und Robotik.</p>
+        </article>
+        <article class="partner reveal" style="--i:2">
+          <div class="partner__top"><img class="partner__logo" src="assets/logo-dj.png" alt="D+J Bildung"><span class="partner__role">Zertifizierter Bildungsträger</span></div>
+          <h3>D+J Bildung</h3><span class="partner__claim">„AZAV-zugelassen“</span>
+          <p>AZAV-zugelassen nach § 178 SGB III. Qualifiziert Mitarbeitende qualitätsgeprüft — mit der Option auf vollständige staatliche Förderung.</p>
+        </article>
+        <article class="partner reveal" style="--i:3">
+          <div class="partner__top"><img class="partner__logo" src="assets/logo-dj.png" alt="D+J Consult"><span class="partner__role">Fachcontent &amp; Dialoge</span></div>
+          <h3>D+J Consult</h3><span class="partner__claim">„Ziele erreichen“</span>
+          <p>Pflegt Wissensbasis und Gesprächsführung — mit belastbarem Fachwissen aus Finanz-, Gesundheits- und Logistikbranche.</p>
         </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- 03 AUSGANGSLAGE -->
+  <section class="panel" id="ausgangslage" data-title="Ausgangslage" aria-label="Die Ausgangslage">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">Die Ausgangslage</span>
+        <h2>Vier Herausforderungen — gleichzeitig, in jeder Branche.</h2>
+        <p class="lead">Ob Bankfoyer, Klinikempfang oder Logistikzentrale: Es sind immer dieselben vier Muster. Nur die Menschen, die vor der Tür stehen, sind andere.</p>
+      </div>
+      <div class="grid grid-2" data-stagger>
+        <article class="chal reveal" style="--i:0">
+          <div class="chal__head"><span class="idx">01</span><h3>Weniger Kontakte, höherer Anspruch</h3></div>
+          <p>Die Frequenz sinkt, aber der persönliche Kontakt bleibt das, was Sie von rein digitalen Anbietern unterscheidet. Jede Begegnung muss zählen.</p>
+          <ul class="chal__ex">
+            <li><span class="tag">Filiale</span>Weniger Besuche, dafür beratungsintensivere Anliegen.</li>
+            <li><span class="tag">Klinik</span>Der erste Eindruck an der Anmeldung prägt die gesamte Behandlung.</li>
+            <li><span class="tag">Logistik</span>Fahrer haben Kontakt zur Pforte — sonst zu niemandem im Werk.</li>
+          </ul>
+        </article>
+        <article class="chal reveal" style="--i:1">
+          <div class="chal__head"><span class="idx">02</span><h3>Nachwuchs- &amp; Fachkräftemangel</h3></div>
+          <p>Junge Talente wählen Arbeitgeber, die modern und digital wirken. Auf Job- und Fachmessen konkurrieren alle um dieselbe Generation.</p>
+          <ul class="chal__ex">
+            <li><span class="tag">Filiale</span>Azubi-Gewinnung gegen Direktbanken und Tech-Arbeitgeber.</li>
+            <li><span class="tag">Klinik</span>Pflege- und MTA-Stellen bleiben monatelang unbesetzt.</li>
+            <li><span class="tag">Logistik</span>Fahrer, Staplerfahrer und Disponenten fehlen flächendeckend.</li>
+          </ul>
+        </article>
+        <article class="chal reveal" style="--i:2">
+          <div class="chal__head"><span class="idx">03</span><h3>Self-Service- &amp; Digitalisierungsdruck</h3></div>
+          <p>Leistungen wandern auf Terminals, Portale und Apps. Die Migration gelingt nur, wenn Menschen dabei begleitet werden — sonst kommen sie zurück an den Schalter.</p>
+          <ul class="chal__ex">
+            <li><span class="tag">Filiale</span>SB-Terminal statt Kasse — angenommen wird es nur mit Begleitung.</li>
+            <li><span class="tag">Klinik</span>Check-in-Kiosk und Patientenportal überfordern viele Ankommende.</li>
+            <li><span class="tag">Logistik</span>Self-Check-in an der Pforte scheitert an Sprache und Bedienlogik.</li>
+          </ul>
+        </article>
+        <article class="chal reveal" style="--i:3">
+          <div class="chal__head"><span class="idx">04</span><h3>Sprachbarrieren &amp; Unsicherheit</h3></div>
+          <p>Ältere Menschen, fremdsprachige Besucher und Erstnutzer brauchen Geduld und Wiederholung — Zeit, die dem Personal an anderer Stelle fehlt.</p>
+          <ul class="chal__ex">
+            <li><span class="tag">Filiale</span>Unsicherheit an Automat und Online-Zugang kostet Servicezeit.</li>
+            <li><span class="tag">Klinik</span>Aufnahme und Wegeleitung in Sprachen, die niemand im Dienst spricht.</li>
+            <li><span class="tag">Logistik</span>Fahrer aus ganz Europa, Anweisungen nur auf Deutsch.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 LÖSUNG -->
+  <section class="panel" id="loesung" data-title="Die Lösung" aria-label="Die Lösung">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">Die Lösung</span>
+        <h2>Ein humanoider KI-Roboter. Er sieht, hört und spricht.</h2>
+        <p class="lead">Kein Bildschirm auf Rädern — ein echtes Gegenüber, das Menschen anspricht, versteht und im Dialog weiterhilft. In Ihrem Corporate Design gebrandet, an Ihr freigegebenes Unternehmenswissen angebunden.</p>
+      </div>
+      <div class="grid grid-3" data-stagger>
+        <article class="sense reveal" style="--i:0">
+          <svg class="sense__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="sense__k">Sieht</span><h3>Kameras &amp; Computer Vision</h3>
+          <p>Erkennt Menschen und spricht sie aktiv an, liest gezeigte Screenshots, Karten und Dokumente — und beschreibt Situationen im Raum.</p>
+        </article>
+        <article class="sense reveal" style="--i:1">
+          <svg class="sense__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M5 10v1a7 7 0 0 0 14 0v-1"/><path d="M12 19v3"/></svg>
+          <span class="sense__k">Hört</span><h3>Mikrofon-Array &amp; Spracherkennung</h3>
+          <p>Versteht natürliche Sprache — auch im Messelärm, in der belebten Empfangshalle und über mehrere Sprachen hinweg.</p>
+        </article>
+        <article class="sense reveal" style="--i:2">
+          <svg class="sense__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+          <span class="sense__k">Spricht</span><h3>Conversational AI</h3>
+          <p>Führt echte, geduldige Dialoge, beantwortet Fragen auf Basis freigegebenen Unternehmenswissens und leitet gezielt weiter.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 USE CASES -->
+  <section class="panel" id="usecases" data-title="Use Cases" aria-label="Use Cases">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">Fünf Use Cases · im Dialog</span>
+        <h2>So klingt es, wenn Technologie tatsächlich weiterhilft.</h2>
+        <p class="lead">Keine Demo-Skripte. Fünf Situationen aus dem Alltag von Messestand, Empfang, Servicezone, Werkspforte und Klinikfoyer — inklusive der Gespräche, die dabei geführt werden.</p>
+      </div>
+      <div class="uc reveal">
+        <div class="uc__tabs" role="tablist" aria-label="Use Cases">
+          <button class="uc__tab" role="tab" aria-selected="true"  aria-controls="uc01" id="tab01">01 — Messe &amp; Recruiting</button>
+          <button class="uc__tab" role="tab" aria-selected="false" aria-controls="uc02" id="tab02">02 — Empfang &amp; Orientierung</button>
+          <button class="uc__tab" role="tab" aria-selected="false" aria-controls="uc03" id="tab03">03 — Service &amp; Lösung</button>
+          <button class="uc__tab" role="tab" aria-selected="false" aria-controls="uc04" id="tab04">04 — Logistik &amp; Pforte</button>
+          <button class="uc__tab" role="tab" aria-selected="false" aria-controls="uc05" id="tab05">05 — Klinik &amp; Aufnahme</button>
+        </div>
+
+        <div class="uc__panel is-active" id="uc01" role="tabpanel" aria-labelledby="tab01">
+          <div class="uc__full">
+            <div>
+              <span class="uc__scene">Messe- &amp; Jobmesseauftritt</span>
+              <h3>Der Magnet für Ihren Stand.</h3>
+              <p>Er zieht Besucher an, transportiert Innovationskraft — und spricht auf Jobmessen genau die Generation an, die Sie als Auszubildende und Mitarbeitende gewinnen wollen.</p>
+              <ul class="uc__caps">
+                <li><span class="k">Sieht</span><span>erkennt vorbeigehende Besucher und wendet sich ihnen aktiv zu.</span></li>
+                <li><span class="k">Spricht</span><span>weckt Neugier und führt gezielt zum Stand für Informations- und Beratungsgespräche.</span></li>
+                <li><span class="k">Gewinnt</span><span>Aufmerksamkeit für die Arbeitgebermarke — ideal für Azubi- und Nachwuchsgewinnung.</span></li>
+                <li><span class="k">Ergebnis</span><span>Mehr Standbesucher, mehr qualifizierte Gespräche — und ein starkes Signal als moderner, digitaler Arbeitgeber.</span></li>
+              </ul>
+            </div>
+            <div class="dialog" id="dialog01">
+              <div class="dialog__hd"><span>Transkript · Vom Vorbeigehen zum Bewerbungsgespräch</span><span class="hint">klicken = ganz zeigen</span></div>
+              <div class="turn turn--bot" data-type data-who="Roboter" data-text="„Guten Tag! Sie schauen so interessiert — darf ich Ihnen in einer Minute zeigen, was uns als Arbeitgeber ausmacht?“" data-stagedir="dreht den Kopf zur Besucherin und stellt Blickkontakt her"></div>
+              <div class="turn turn--human" data-type data-who="Besucherin" data-text="„Klar — aber ehrlich gesagt weiß ich nicht, ob eine Bank überhaupt zu mir passt.“"></div>
+              <div class="turn turn--bot" data-type data-who="Roboter" data-text="„Das höre ich oft. Sagen Sie mir: Arbeiten Sie lieber mit Menschen oder mit Zahlen?“" data-stagedir="neigt den Kopf und hört aufmerksam zu"></div>
+              <div class="turn turn--human" data-type data-who="Besucherin" data-text="„Auf jeden Fall mit Menschen.“"></div>
+              <div class="turn turn--bot" data-type data-who="Roboter" data-text="„Perfekt — dann ist die Beratung genau Ihr Feld. Kommen Sie mit an den Stand, meine Kollegin zeigt Ihnen die Ausbildungswege und Sie können direkt Fragen stellen.“" data-stagedir="dreht sich zum Stand, lädt mit einer Geste ein und meldet den Kontakt an das Standteam"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="uc__panel" id="uc02" role="tabpanel" aria-labelledby="tab02" hidden>
+          <div class="ucmini"><span class="scene">Empfang &amp; Besucherservice</span><h4>Orientierung ohne Wartezeit.</h4><p>Besucher werden begrüßt, ihr Anliegen wird aufgenommen, der zuständige Ansprechpartner benachrichtigt und der Weg erklärt — mehrsprachig und ohne Wartezeit an der Anmeldung.</p></div>
+        </div>
+        <div class="uc__panel" id="uc03" role="tabpanel" aria-labelledby="tab03" hidden>
+          <div class="ucmini"><span class="scene">Service &amp; Lösung</span><h4>Begleitet zur Selbstständigkeit.</h4><p>In der Servicezone werden einfache Anliegen direkt gelöst und die Nutzung von Terminals begleitet — bis zur gezielten Übergabe an die persönliche Beratung, wenn es komplexer wird.</p></div>
+        </div>
+        <div class="uc__panel" id="uc04" role="tabpanel" aria-labelledby="tab04" hidden>
+          <div class="ucmini"><span class="scene">Logistik &amp; Pforte</span><h4>Abfertigung, die jede Sprache spricht.</h4><p>An der Werkspforte werden Fahrer und Besucher abgefertigt, die Werksunterweisung erklärt und der Materialfluss unterstützt — mehrsprachig, auch wenn niemand im Dienst die Sprache des Fahrers spricht.</p></div>
+        </div>
+        <div class="uc__panel" id="uc05" role="tabpanel" aria-labelledby="tab05" hidden>
+          <div class="ucmini"><span class="scene">Klinik &amp; Aufnahme</span><h4>Ein ruhiger erster Eindruck.</h4><p>Im Klinikfoyer werden Patienten und Besucher geleitet, Aufnahmeprozesse erklärt und mehrsprachige Auskunft gegeben — das entlastet die Anmeldung und prägt einen ruhigen ersten Eindruck.</p></div>
+        </div>
+        <p class="form__note" style="margin-top:14px">Use Case 01 ist vollständig als Dialog ausgearbeitet. Die Szenen 02–05 sind hier als Kurzprofile dargestellt; die ausgeschriebenen Gesprächsverläufe entstehen im Reality Check entlang Ihrer konkreten Prozesse.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 EINSATZFELDER -->
+  <section class="panel" id="einsatzfelder" data-title="Einsatzfelder" aria-label="Einsatzfelder">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">Einsatzfelder</span>
+        <h2>Eine Intelligenzschicht. Branchenoffen im Einsatz.</h2>
+        <p class="lead">Wo Menschen begrüßt, informiert, geschult oder begleitet werden, entsteht derselbe Nutzen — unabhängig von der Branche. Die folgenden Beispiele zeigen, wie das konkret aussieht.</p>
+      </div>
+      <div class="grid grid-3" data-stagger>
+        <article class="card field reveal" style="--i:0"><h3>Messeauftritte</h3><p>Aufmerksamkeit am Stand, aktive Ansprache vorbeigehender Besucher, qualifizierte Weiterleitung ans Standteam — plus messbare Kontaktzahlen.</p><div class="tags"><span class="tag-chip">Humanoid</span><span class="tag-chip">Display</span><span class="tag-chip">Terminal</span></div></article>
+        <article class="card field reveal" style="--i:1"><h3>Interne Veranstaltungen</h3><p>Townhalls, Kick-offs, Innovationstage und Führungskräftetagungen: als Gastgeber, Moderationshilfe und begehbares Beispiel für die eigene KI-Strategie.</p><div class="tags"><span class="tag-chip">Humanoid</span><span class="tag-chip">Meeting-Agent</span></div></article>
+        <article class="card field reveal" style="--i:2"><h3>Empfang &amp; Besucherservice</h3><p>Besucher begrüßen, Anliegen aufnehmen, Ansprechpartner benachrichtigen, Wege erklären — mehrsprachig und ohne Wartezeit.</p><div class="tags"><span class="tag-chip">Humanoid</span><span class="tag-chip">Display</span><span class="tag-chip">Terminal</span></div></article>
+        <article class="card field reveal" style="--i:3"><h3>Filiale &amp; Kundenservice</h3><p>Beispiel Finanzwirtschaft: Orientierung im Foyer, begleitete Terminal-Nutzung, Lösung einfacher Serviceanliegen, Übergabe an die Beratung.</p><div class="tags"><span class="tag-chip">Humanoid</span><span class="tag-chip">SB-Terminal</span></div></article>
+        <article class="card field reveal" style="--i:4"><h3>Gesundheitswesen</h3><p>Beispiel Gesundheitswesen: Patienten- und Besucherleitung, Aufnahmeprozesse, mehrsprachige Auskunft, Entlastung an der Anmeldung.</p><div class="tags"><span class="tag-chip">Display</span><span class="tag-chip">Terminal</span><span class="tag-chip">Humanoid</span></div></article>
+        <article class="card field reveal" style="--i:5"><h3>Logistik &amp; Industrie</h3><p>Beispiel Logistik: Fahrer- und Besucherabfertigung an der Pforte, Werksunterweisung, Materialfluss, mobile Datenerfassung.</p><div class="tags"><span class="tag-chip">Terminal</span><span class="tag-chip">AMR</span><span class="tag-chip">Sensorik</span></div></article>
+        <article class="card field reveal" style="--i:6"><h3>Wissen &amp; Schulung</h3><p>Produkte, Arbeitsanweisungen und Prozesse auf Basis freigegebenen Unternehmenswissens erklären — auf Abruf, mehrsprachig, jederzeit gleich geduldig.</p><div class="tags"><span class="tag-chip">Web</span><span class="tag-chip">Display</span><span class="tag-chip">Humanoid</span></div></article>
+        <article class="card field reveal" style="--i:7"><h3>Prozessassistenz &amp; Qualität</h3><p>Definierte Abläufe beobachten, Informationen erfassen, auf Abweichungen hinweisen und Mitarbeitende bei Entscheidungen unterstützen.</p><div class="tags"><span class="tag-chip">Kamera</span><span class="tag-chip">Sensorik</span><span class="tag-chip">AMR</span></div></article>
+        <article class="card field reveal" style="--i:8"><h3>Inspektion &amp; Facility</h3><p>Orte und Anlagen erreichen, Bild- und Sensordaten aufnehmen, Auffälligkeiten dokumentieren — bei klar definierter Zweckbindung.</p><div class="tags"><span class="tag-chip">Quadruped</span><span class="tag-chip">AMR</span><span class="tag-chip">Servicerobotik</span></div></article>
+      </div>
+      <div class="branchrow reveal">
+        <span class="lbl">Erprobtes Branchen-Know-how aus laufenden und abgeschlossenen Projekten:</span>
+        <div class="items"><span>Finanzwirtschaft</span><span>Gesundheitswesen</span><span>Logistik &amp; Distribution</span><span>Produktion</span><span>Handel &amp; E-Commerce</span><span>Field Operations</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 TECHNOLOGIEVERGLEICH -->
+  <section class="panel" id="technologien" data-title="Technologien" aria-label="Technologievergleich">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">Technologievergleich</span>
+        <h2>Braucht Ihre KI wirklich einen humanoiden Körper?</h2>
+        <p class="lead">Vielleicht. Vielleicht genügt ein intelligentes Display. Für andere Prozesse ist eine Kamera, ein AMR oder ein vierbeiniger Roboter die wirtschaftlich bessere Lösung. Die Technologie folgt dem Prozess — nicht umgekehrt.</p>
+      </div>
+
+      <div class="techsel reveal">
+        <div class="techsel__list" role="tablist" aria-label="Lösungsformen">
+          <button class="techsel__opt" role="tab" aria-selected="true"  data-tech="t1"><span class="n">01</span><span class="nm">Display &amp; Terminal</span></button>
+          <button class="techsel__opt" role="tab" aria-selected="false" data-tech="t2"><span class="n">02</span><span class="nm">Kamera &amp; Sensorik</span></button>
+          <button class="techsel__opt" role="tab" aria-selected="false" data-tech="t3"><span class="n">03</span><span class="nm">AMR · mobile Plattform</span></button>
+          <button class="techsel__opt" role="tab" aria-selected="false" data-tech="t4"><span class="n">04</span><span class="nm">Vierbeiniger Roboter</span></button>
+          <button class="techsel__opt" role="tab" aria-selected="false" data-tech="t5"><span class="n">05</span><span class="nm">Humanoider Roboter</span></button>
+          <button class="techsel__opt" role="tab" aria-selected="false" data-tech="t6"><span class="n">06</span><span class="nm">Reinigungs- &amp; Servicerobotik</span></button>
+        </div>
+
+        <div class="techsel__stage">
+          <div class="techsel__view is-active" id="t1">
+            <div class="techsel__silo" aria-hidden="true"><svg viewBox="0 0 100 120"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect class="draw" x="18" y="24" width="64" height="44" rx="3"/><path class="draw" d="M50 68v18M34 96h32M42 86h16"/></g></svg></div>
+            <div class="techsel__body">
+              <h3>Display &amp; Terminal</h3>
+              <p class="techsel__lead">Die schnellste Form, eine KI physisch verfügbar zu machen: verlässlich, wartungsarm, in nahezu jedem Raum einsetzbar.</p>
+              <div class="techsel__spec">
+                <div class="row"><span class="k">Einsatzfelder</span><span class="v">Empfang, Beratung, Self-Service, Schulung</span></div>
+                <div class="row"><span class="k">Stärken</span><span class="v">Schnell einsatzbereit, zuverlässig, vergleichsweise günstig, einfache Integration</span></div>
+                <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Keine Mobilität, geringere physische Präsenz, weniger Aufmerksamkeit</span></div>
+              </div>
+              <p class="techsel__ex"><span class="k">Beispiel</span>Ein Klinik-Check-in erklärt Aufnahmeschritte mehrsprachig am Kiosk — statt an der Anmeldung nachzufragen.</p>
+            </div>
+          </div>
+
+          <div class="techsel__view" id="t2">
+            <div class="techsel__silo" aria-hidden="true"><svg viewBox="0 0 100 120"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect class="draw" x="16" y="40" width="68" height="40" rx="4"/><path class="draw" d="M34 40l6-10h20l6 10"/><circle class="draw" cx="50" cy="60" r="12"/><circle cx="72" cy="50" r="2.5" fill="currentColor" stroke="none"/></g></svg></div>
+            <div class="techsel__body">
+              <h3>Kamera &amp; Sensorik</h3>
+              <p class="techsel__lead">Erfasst kontinuierlich, was im Prozess tatsächlich passiert — ohne dass jemand etwas eingeben muss.</p>
+              <div class="techsel__spec">
+                <div class="row"><span class="k">Einsatzfelder</span><span class="v">Prozessbeobachtung, Dokumentation, Qualitätshinweise</span></div>
+                <div class="row"><span class="k">Stärken</span><span class="v">Kontinuierliche Datenerfassung, erkennt Situationen und Abweichungen früh</span></div>
+                <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Datenschutz, klare Beobachtungsgrenzen, Datenqualität, Zweckbindung</span></div>
+              </div>
+              <p class="techsel__ex"><span class="k">Beispiel</span>Im Wareneingang wird erkannt, wenn Paletten falsch gestapelt sind — der Hinweis geht an den Mitarbeiter, nicht ins Archiv.</p>
+            </div>
+          </div>
+
+          <div class="techsel__view" id="t3">
+            <div class="techsel__silo" aria-hidden="true"><svg viewBox="0 0 100 120"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect class="draw" x="20" y="42" width="60" height="34" rx="3"/><path class="draw" d="M30 42V32h40v10"/><circle class="draw" cx="34" cy="86" r="9"/><circle class="draw" cx="66" cy="86" r="9"/></g></svg></div>
+            <div class="techsel__body">
+              <h3>AMR · mobile Plattform</h3>
+              <p class="techsel__lead">Bringt Intelligenz dorthin, wo Material und Menschen sich bewegen — mit messbarem Prozessnutzen statt Showeffekt.</p>
+              <div class="techsel__spec">
+                <div class="row"><span class="k">Einsatzfelder</span><span class="v">Logistik, Materialtransport, mobile Information</span></div>
+                <div class="row"><span class="k">Stärken</span><span class="v">Verbindet Mobilität mit belastbarem Business Case, gut skalierbar</span></div>
+                <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Navigation, Infrastruktur, definierte Sicherheitszonen</span></div>
+              </div>
+              <p class="techsel__ex"><span class="k">Beispiel</span>Im Klinikum transportiert die Plattform Proben und Verbrauchsmaterial zwischen Station und Labor — nachts wie tagsüber.</p>
+            </div>
+          </div>
+
+          <div class="techsel__view" id="t4">
+            <div class="techsel__silo" aria-hidden="true"><svg viewBox="0 0 100 120"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect class="draw" x="28" y="40" width="44" height="22" rx="4"/><path class="draw" d="M72 46l12-8"/><path class="draw" d="M32 62l-6 30M46 62v30M54 62v30M68 62l6 30"/></g></svg></div>
+            <div class="techsel__body">
+              <h3>Vierbeiniger Roboter</h3>
+              <p class="techsel__lead">Erreicht Orte, die für Räder unzugänglich sind — Treppen, Außenbereiche, enge oder unebene Anlagen.</p>
+              <div class="techsel__spec">
+                <div class="row"><span class="k">Einsatzfelder</span><span class="v">Inspektion, Außenbereiche, schwer zugängliche Orte</span></div>
+                <div class="row"><span class="k">Stärken</span><span class="v">Hohe Beweglichkeit, mobile Sensorik, robuste Datenerfassung im Feld</span></div>
+                <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Spezialisierter Einsatz, Transportfähigkeit, Integration, Betriebskosten</span></div>
+              </div>
+              <p class="techsel__ex"><span class="k">Beispiel</span>Auf dem Werksgelände läuft die Nachtrunde selbstständig: Wärmebild an kritischen Anlagen, Auffälligkeiten am Morgen im Bericht.</p>
+            </div>
+          </div>
+
+          <div class="techsel__view" id="t5">
+            <div class="techsel__silo" aria-hidden="true"><svg viewBox="0 0 100 120"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><circle class="draw" cx="50" cy="26" r="11"/><path class="draw" d="M50 37v34M50 45L30 58M50 45l20 13M50 71l-10 26M50 71l10 26"/></g></svg></div>
+            <div class="techsel__body">
+              <h3>Humanoider Roboter</h3>
+              <p class="techsel__lead">Ein echtes Gegenüber. Überall dort stark, wo Aufmerksamkeit, Ansprache und menschenähnliche Interaktion den Unterschied machen.</p>
+              <div class="techsel__spec">
+                <div class="row"><span class="k">Einsatzfelder</span><span class="v">Besucherempfang, Messe, Service, Training, Assistenz</span></div>
+                <div class="row"><span class="k">Stärken</span><span class="v">Hohe Aufmerksamkeit, Gestik und Blickkontakt, aktive Ansprache, starkes Imagesignal</span></div>
+                <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Kosten, Belastbarkeit im Dauerbetrieb, physische Sicherheit, klare Einsatzzonen</span></div>
+              </div>
+              <p class="techsel__ex"><span class="k">Beispiel</span>Am Messestand spricht er vorbeigehende Besucher an und übergibt qualifizierte Kontakte direkt an das Standteam.</p>
+            </div>
+          </div>
+
+          <div class="techsel__view" id="t6">
+            <div class="techsel__silo" aria-hidden="true"><svg viewBox="0 0 100 120"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><ellipse class="draw" cx="50" cy="66" rx="34" ry="16"/><path class="draw" d="M16 66v10a34 12 0 0 0 68 0V66"/><circle cx="50" cy="60" r="3" fill="currentColor" stroke="none"/></g></svg></div>
+            <div class="techsel__body">
+              <h3>Reinigungs- &amp; Servicerobotik</h3>
+              <p class="techsel__lead">Erfüllt eine produktive Hauptaufgabe und liefert nebenbei Daten über Flächen, Auslastung und Betriebszustände.</p>
+              <div class="techsel__spec">
+                <div class="row"><span class="k">Einsatzfelder</span><span class="v">Flächenbetrieb, Facility Services, Zustandserfassung</span></div>
+                <div class="row"><span class="k">Stärken</span><span class="v">Verbindet produktive Arbeit mit kontinuierlicher mobiler Datenerfassung</span></div>
+                <div class="row"><span class="k">Zu berücksichtigen</span><span class="v">Zusatzdaten benötigen klare Zweckbindung, Zugriffsrechte und Löschkonzept</span></div>
+              </div>
+              <p class="techsel__ex"><span class="k">Beispiel</span>Die Reinigung im Foyer liefert zugleich Belegungsdaten — die Taktung folgt der tatsächlichen Nutzung statt dem Wochenplan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="tech__closing reveal">Wo ein Display denselben Nutzen erzeugt wie ein Roboter, sollte das Display eingesetzt werden. Wo Mobilität, Wahrnehmung oder physische Präsenz einen messbaren Mehrwert schaffen, wird Robotik relevant.</p>
+    </div>
+  </section>
+
+  <!-- 08 ARCHITEKTUR -->
+  <section class="panel" id="architektur" data-title="Architektur" aria-label="Architektur">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">Architektur</span>
+        <h2>Eine KI-Basis — viele physische Schnittstellen.</h2>
+        <p class="lead">Wissen und Integrationen gehören nicht an einen einzelnen Roboter gebunden. Dieselbe Basis bedient Telefon, Web, Display und Robotik — das senkt die Herstellerabhängigkeit und macht den Ausbau planbar.</p>
+      </div>
+      <div class="stack reveal">
+        <div class="layer"><span class="layer__n">Schicht 03 · Schnittstellen</span><h3>Physische &amp; digitale Schnittstellen</h3><div class="chips"><span>Telefon</span><span>Web</span><span>Meeting</span><span>Display</span><span>Kamera</span><span>AMR</span><span>Quadruped</span><span>Humanoid</span></div></div>
+        <div class="layer__flow" aria-hidden="true">▲ ▼</div>
+        <div class="layer"><span class="layer__n">Schicht 02 · Intelligenz</span><h3>KI-Agenten &amp; Conversational AI</h3><div class="chips"><span>Dialog</span><span>Kontext</span><span>Berechtigungen</span><span>Orchestrierung</span><span>Dokumentation</span></div></div>
+        <div class="layer__flow" aria-hidden="true">▲ ▼</div>
+        <div class="layer"><span class="layer__n">Schicht 01 · Fundament</span><h3>Unternehmenswissen &amp; Backend-Systeme</h3><div class="chips"><span>CRM</span><span>ERP</span><span>WMS</span><span>Dokumente</span><span>Datenbanken</span><span>Prozesslogik</span></div></div>
+      </div>
+      <div class="archvals reveal">
+        <span>Wiederverwendung von Wissen</span><span>Weniger Herstellerabhängigkeit</span><span>Schrittweiser Ausbau</span><span>Einheitliche Governance</span><span>Skalierbar auf weitere Standorte</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 GOVERNANCE -->
+  <section class="panel" id="governance" data-title="Governance" aria-label="Governance, Datenschutz, Security">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">Governance · Datenschutz · Security</span>
+        <h2>Entscheidend ist nicht nur, was die KI kann — sondern was sie darf.</h2>
+        <p class="lead">Physical AI verarbeitet Audio-, Video-, Standort- und Prozessdaten und kann im Einzelfall physische Aktionen auslösen. Deshalb steht am Anfang ein kombiniertes Rechte- und Steuerungsmodell — nicht am Ende.</p>
+      </div>
+
+      <div class="gov4 reveal" data-stagger>
+        <div class="lvl" style="--i:0"><span class="k">Mensch</span><p>Welcher Mitarbeiter, Kunde oder Besucher darf welche Funktion nutzen?</p></div>
+        <div class="lvl" style="--i:1"><span class="k">KI-Agent</span><p>Auf welches Wissen und welche Systeme darf der Agent zugreifen?</p></div>
+        <div class="lvl" style="--i:2"><span class="k">Gerät</span><p>Darf dieses Display, diese Kamera oder dieser Roboter auf die jeweiligen Daten zugreifen?</p></div>
+        <div class="lvl" style="--i:3"><span class="k">Situation</span><p>Ist der Zugriff nur an einem Ort, zu einer Zeit oder nach Freigabe erlaubt?</p></div>
+      </div>
+
+      <div class="autostep reveal" id="autostep">
+        <div class="autostep__cap">Autonomie mit klaren Grenzen</div>
+        <div class="autostep__track" role="tablist" aria-label="Autonomiestufen">
+          <span class="fill" id="autoFill" aria-hidden="true"></span>
+          <button class="autonode" role="tab" aria-selected="true"  data-lvl="1" data-name="Informieren"     data-desc="Beantwortet Fragen und stellt freigegebene Informationen bereit." data-ex="Besucherinformation"><span class="pt">1</span><span class="lb">Informieren</span></button>
+          <button class="autonode" role="tab" aria-selected="false" data-lvl="2" data-name="Empfehlen"        data-desc="Erkennt eine Situation und schlägt eine Aktion vor." data-ex="Qualitätshinweis"><span class="pt">2</span><span class="lb">Empfehlen</span></button>
+          <button class="autonode" role="tab" aria-selected="false" data-lvl="3" data-name="Vorbereiten"      data-desc="Bereitet einen Vorgang vor; ein Mensch bestätigt ihn." data-ex="CRM-Vorgang, Bestellung"><span class="pt">3</span><span class="lb">Vorbereiten</span></button>
+          <button class="autonode" role="tab" aria-selected="false" data-lvl="4" data-name="Ausführen"        data-desc="Führt klar begrenzte, freigegebene Aktionen selbstständig aus." data-ex="Benachrichtigung, Transportauftrag"><span class="pt">4</span><span class="lb">Ausführen</span></button>
+          <button class="autonode" role="tab" aria-selected="false" data-lvl="5" data-name="Physisch agieren" data-desc="Bewegt sich oder interagiert kontrolliert mit der Umgebung." data-ex="Inspektions- oder Assistenzaufgabe"><span class="pt">5</span><span class="lb">Physisch agieren</span></button>
+        </div>
+        <div class="autostep__detail">
+          <span class="big" id="autoBig">1</span>
+          <div class="mid" id="autoMid">
+            <div class="nm" id="autoName">Informieren</div>
+            <p class="ds" id="autoDesc">Beantwortet Fragen und stellt freigegebene Informationen bereit.</p>
+          </div>
+          <div class="exbox"><span class="k">Beispiel</span><span class="v" id="autoEx">Besucherinformation</span></div>
+        </div>
+      </div>
+      <p class="autonote reveal">Der geeignete Autonomiegrad wird anhand von Nutzen, Datenzugriff, Fehlerfolgen und erforderlicher menschlicher Aufsicht festgelegt — nicht anhand des technisch Machbaren.</p>
+
+      <div class="checks reveal">
+        <div class="checkcard">
+          <h3><span class="idx">A</span> Daten &amp; Recht</h3>
+          <ul>
+            <li>Nur Daten erfassen, die der Use Case tatsächlich benötigt</li>
+            <li>Edge- bzw. lokale Verarbeitung prüfen</li>
+            <li>Aufbewahrungs- und Löschfristen definieren</li>
+            <li>Erkennung und Identifizierung von Personen klar unterscheiden</li>
+            <li>Besucher und Mitarbeitende transparent informieren</li>
+            <li>DSGVO- und AI-Act-konformer Betrieb, dokumentiert</li>
+          </ul>
+        </div>
+        <div class="checkcard">
+          <h3><span class="idx">B</span> Technik &amp; Physik</h3>
+          <ul>
+            <li>Rollenbasierte Zugriffsrechte, Trennung von Lese- und Schreibrechten</li>
+            <li>Schutz vor Prompt Injection und manipulierten Eingaben</li>
+            <li>Geprüfte Wissensquellen und definierte Fallbacks</li>
+            <li>Definierte Einsatz- und Sperrzonen, Kollisionsschutz</li>
+            <li>Not-Aus, manueller Eingriff, sicherer Zustand bei Ausfall</li>
+            <li>Regeln für beaufsichtigten und unbeaufsichtigten Betrieb</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 QUALIFIZIERUNG -->
+  <section class="panel" id="qualifizierung" data-title="Qualifizierung" aria-label="Qualifizierung">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">Qualifizierung · AZAV-zertifiziert</span>
+        <h2>Technologie wirkt erst, wenn Menschen sie sicher beherrschen.</h2>
+        <p class="lead">Jede Einführung enthält eine Aus- und Weiterbildungskomponente. Durchgeführt von D+J Bildung — einem nach AZAV staatlich zugelassenen Bildungsträger, dessen Qualität durch eine fachkundige Stelle geprüft und regelmäßig auditiert wird.</p>
+      </div>
+      <div class="grid grid-3" data-stagger>
+        <article class="prog reveal" style="--i:0"><h3>Arbeit 4.0 — Zukunft der Arbeit</h3><p>Zertifizierte Weiterbildung in 12 Modulen als Change- und Akzeptanzprogramm — mit der Möglichkeit vollständiger staatlicher Förderung. Nimmt Veränderungsängste, baut Kompetenz auf und sichert die langfristige Anwendbarkeit am Arbeitsplatz.</p></article>
+        <article class="prog reveal" style="--i:1"><span class="badge">Verpflichtend</span><h3>EU-AI-Act-Grundschulung 4.0</h3><p>Seit Februar 2025 ist die Schulung verpflichtend für alle Mitarbeitenden, die im Unternehmen mit KI arbeiten. Art. 4 EU-AI-Act fordert nachweisbare KI-Kompetenz — wir vermitteln sie und dokumentieren den Nachweis prüffest.</p></article>
+        <article class="prog reveal" style="--i:2"><h3>Betreiber- &amp; Anwenderschulung</h3><p>Umgang mit dem Roboter im Tagesbetrieb: Ansprache, Übergabe an Menschen, Eskalation, Störungsfälle, Not-Aus und Human Oversight.</p></article>
+        <article class="prog reveal" style="--i:3"><h3>Key-User- &amp; Multiplikatorenprogramm</h3><p>Eigene Multiplikatoren, die Dialoge mitgestalten, Feedback strukturieren und den Rollout in weitere Standorte tragen.</p></article>
+        <article class="prog reveal" style="--i:4"><h3>KI für Führungskräfte 4.0</h3><p>Für Führungskräfte: Strategie, Wirtschaftlichkeit und Verantwortung beim Einsatz von KI und Robotik im eigenen Unternehmen.</p></article>
+      </div>
+
+      <div class="certbox reveal">
+        <div class="certbox__hd">D+J Bildung — staatlich zugelassener Bildungsträger</div>
+        <div class="certbox__body">
+          <dl>
+            <div class="row"><dt>Zulassung</dt><dd>AZAV nach § 178 SGB III</dd></div>
+            <div class="row"><dt>Träger-Nr.</dt><dd>ZG4021</dd></div>
+          </dl>
+          <dl>
+            <div class="row"><dt>Fachkundige Stelle</dt><dd>CERTURIA Certification Germany GmbH</dd></div>
+            <div class="row"><dt>Gültig bis</dt><dd>12.05.2030</dd></div>
+          </dl>
+          <div class="row row--wide"><dt>Qualität</dt><dd>Mehrstufiges Auditverfahren, dokumentierte Dozentenqualifikation, standardisierte Evaluation, regelmäßige Überwachungsaudits</dd></div>
+        </div>
+      </div>
+
+      <div class="funding reveal" data-stagger>
+        <div class="fund" style="--i:0"><span class="par">§ 82 SGB III</span><h4>Qualifizierungschancengesetz</h4><p>Förderung für Beschäftigte — je nach Betriebsgröße bis zur vollständigen Kostenübernahme inklusive Zuschuss zum Arbeitsentgelt.</p></div>
+        <div class="fund" style="--i:1"><span class="par">§ 81 SGB III</span><h4>Bildungsgutschein</h4><p>Bildungsgutschein für Arbeitssuchende — vollständige Übernahme der Weiterbildungskosten möglich.</p></div>
+        <div class="fund" style="--i:2"><span class="par">§ 45 SGB III</span><h4>AVGS</h4><p>AVGS für Aktivierung und Vermittlung — passgenaue Maßnahmen ohne Eigenanteil.</p></div>
+      </div>
+      <p class="fundnote reveal">Die konkrete Förderhöhe hängt von Betriebsgröße, Zielgruppe und Maßnahme ab. Wir prüfen die Fördermöglichkeiten vor Angebotsabgabe und übernehmen die Abstimmung mit der Agentur für Arbeit.</p>
+    </div>
+  </section>
+
+  <!-- 11 PROZESS -->
+  <section class="panel" id="prozess" data-title="So starten wir" aria-label="So starten wir">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">So starten wir</span>
+        <h2>Von der Technologiebegeisterung zur belastbaren Entscheidung.</h2>
+        <p class="lead">Am Anfang steht kein Kaufvertrag, sondern ein Reality Check: Wir prüfen anhand Ihrer Prozesse, welche Kombination aus KI-Agenten, Wissen, Computer Vision und physischer Technologie sinnvoll, sicher und wirtschaftlich ist.</p>
+      </div>
+      <div class="steps reveal" data-stagger>
+        <div class="step" style="--i:0"><span class="step__n">01</span><h3>Reality Check</h3><p>Prozess- und Zielaufnahme, Live-Demonstration, technologieoffener Vergleich, Bewertung von drei bis fünf Use Cases, Kosten- und Risikokorridor, kompaktes Ergebnisdokument.</p><ul class="step__crit"><li>KI-Reifegrad der Organisation</li><li>Ausbildungsstand der Mitarbeitenden</li><li>Regulatorische Rahmenbedingungen</li><li>Daten- und Systemlandschaft</li></ul></div>
+        <div class="step" style="--i:1"><span class="step__n">02</span><h3>Pilot</h3><p>Testeinsatz auf einer Messe, im Empfang oder in der Servicezone. Ein priorisierter Prozess, definierte KPIs, klare Autonomiestufe.</p></div>
+        <div class="step" style="--i:2"><span class="step__n">03</span><h3>Einführung</h3><p>Branding, Dialoge und Prozesse auf Ihr Haus zugeschnitten — begleitet von der zertifizierten Qualifizierung der Mitarbeitenden.</p></div>
+        <div class="step" style="--i:3"><span class="step__n">04</span><h3>Betrieb &amp; Ausbau</h3><p>Laufende Komplettbetreuung aus einer Hand. Neue Use Cases, weitere Standorte, wachsende Fähigkeiten.</p></div>
+      </div>
+      <div class="serviced reveal">
+        <div class="svc"><h3>Technik — Rundum-Betrieb</h3><ul><li>Bereitstellung, Aufbau &amp; Inbetriebnahme vor Ort</li><li>Wartung, Software-Updates &amp; Sicherheits-Patches</li><li>Monitoring, Ausfallsicherheit &amp; schneller Vor-Ort-Service</li><li>DSGVO- und AI-Act-konformer, sicherer Betrieb</li></ul></div>
+        <div class="svc"><h3>Inhalt — Wissen &amp; Dialoge</h3><ul><li>Laufende Pflege der Dialoge &amp; Antworten</li><li>Fachwissen aus Ihrer Branche und Ihrem Sektor eingepflegt</li><li>Aus- und Weiterbildung der Mitarbeitenden, zertifiziert begleitet</li><li>Aktualisierung bei neuen Produkten &amp; Prozessen</li><li>Saisonale Kampagnen &amp; Messe-Skripte auf Abruf</li></ul></div>
+      </div>
+      <div class="invest reveal">
+        <div class="r"><span class="eyebrow">Investition</span><h3>Individuell kalkuliert — je Projekt.</h3><p>Umfang, Hardware, Integrationstiefe, Betriebsmodell und Qualifizierung unterscheiden sich pro Haus. Sie erhalten ein Angebot, das auf Ihren Prozessen beruht — inklusive geprüfter Fördermöglichkeiten für den Weiterbildungsanteil.</p></div>
+        <a class="btn btn--primary" href="#kontakt" data-nav>Angebot anfragen <span class="arw">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 KONTAKT -->
+  <section class="panel" id="kontakt" data-title="Kontakt" aria-label="Kontakt">
+    <div class="panel__inner">
+      <div class="sect-head reveal">
+        <span class="eyebrow">Der nächste Schritt</span>
+        <h2>Welcher Prozess sollte als Erster Augen, Ohren oder Mobilität bekommen?</h2>
+        <p class="lead">Schreiben Sie uns eine Zeile zu Ihrem Vorhaben — oder rufen Sie direkt an. Wir melden uns kurzfristig mit einem Terminvorschlag.</p>
+      </div>
+
+      <div class="contact__grid reveal">
+        <!-- data-endpoint bleibt leer: Solange kein Server-Dienst (z. B. Formspree) hinterlegt ist,
+             öffnet das Formular beim Absenden automatisch das E-Mail-Programm mit vorausgefüllter
+             Nachricht an info@dj-bildung.de. Für einen echten Endpunkt hier die URL eintragen. -->
+        <form class="form" id="contactForm" data-endpoint="" data-mailto="info@dj-bildung.de" novalidate>
+          <div class="field-row two">
+            <div><label for="f-name">Name <span class="req">*</span></label><input id="f-name" name="name" type="text" required autocomplete="name"></div>
+            <div><label for="f-org">Organisation</label><input id="f-org" name="organisation" type="text" autocomplete="organization"></div>
+          </div>
+          <div class="field-row two">
+            <div><label for="f-mail">E-Mail <span class="req">*</span></label><input id="f-mail" name="email" type="email" required autocomplete="email"></div>
+            <div><label for="f-tel">Telefon <span style="text-transform:none;color:var(--ink-3)">(optional)</span></label><input id="f-tel" name="telefon" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="field-row">
+            <label for="f-int">Interesse</label>
+            <select id="f-int" name="interesse">
+              <option>Physical AI Reality Check</option>
+              <option>Pilot-Einsatz Messe / Veranstaltung</option>
+              <option>Empfang &amp; Besucherservice</option>
+              <option>Lösungen in der Finanzbranche</option>
+              <option>Lösungen für die Logistikbranche</option>
+              <option>Lösungen in der Medizinbranche</option>
+              <option>Qualifizierung &amp; Förderung</option>
+              <option>Erstgespräch, noch offen</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <label for="f-msg">Ihr Vorhaben</label>
+            <textarea id="f-msg" name="vorhaben" placeholder="Ein, zwei Sätze genügen."></textarea>
+          </div>
+          <p class="form__note">Ihre Angaben werden ausschließlich zur Bearbeitung dieser Anfrage verwendet und nicht an Dritte weitergegeben.</p>
+          <div>
+            <button class="btn btn--primary" type="submit">Anfrage senden <span class="arw">→</span></button>
+            <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+
+        <div class="contact__cards">
+          <article class="contactcard">
+            <span class="role">Ansprechpartner · Content &amp; Bildung</span>
+            <h3>Jürgen Nedvidek</h3><p class="org">D+J Consult · D+J Bildung</p>
+            <dl>
+              <div class="row"><dt>Telefon</dt><dd><a href="tel:+4915203081715">+49 152 03081715</a></dd></div>
+              <div class="row"><dt>E-Mail</dt><dd><a href="mailto:info@dj-bildung.de">info@dj-bildung.de</a></dd></div>
+              <div class="row"><dt>Web</dt><dd><a href="https://dj-bildung.com" target="_blank" rel="noopener">dj-bildung.com</a></dd></div>
+            </dl>
+          </article>
+          <article class="contactcard">
+            <span class="role">Ansprechpartner · Technologie</span>
+            <h3>Manuel Haupt</h3><p class="org">MH-Invelopment GmbH · Heidelberg | Germany</p>
+            <dl>
+              <div class="row"><dt>E-Mail</dt><dd><a href="mailto:info@mh-invelopment.com">info@mh-invelopment.com</a></dd></div>
+              <div class="row"><dt>Web</dt><dd><a href="https://mh-invelopment.com" target="_blank" rel="noopener">mh-invelopment.com</a></dd></div>
+            </dl>
+            <a class="btn btn--ghost booklink" href="https://outlook.office.com/bookwithme/user/e893459df0504fc1b5356d3e51290679@mh-invelopment.com?anonymous&amp;ep=plink" target="_blank" rel="noopener">Intro-Call buchen <span class="arw">→</span></a>
+          </article>
+        </div>
+      </div>
+
+      <div class="panelfoot reveal">
+        <div class="panelfoot__top">
+          <div class="panelfoot__logos">
+            <img src="assets/logo-mh.png" alt="MH-Invelopment"><img src="assets/logo-dj.png" alt="D+J"><span class="wm">TTX Community</span>
+          </div>
+          <nav class="panelfoot__nav" aria-label="Rechtliches">
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+          </nav>
+        </div>
+        <p class="legal">Kooperationsangebot von MH-Invelopment GmbH, TTX Community, D+J Bildung und D+J Consult. Beim Einsatz von Kamera-, Mikrofon- und Sensorsystemen im Publikumsverkehr informieren wir Besucherinnen, Besucher und Mitarbeitende transparent über Art, Zweck und Dauer der Verarbeitung; Erkennung und Identifizierung von Personen werden strikt unterschieden. Abbildungen zeigen reale Einsatzszenarien. Angaben zu Förderungen nach SGB III sind unverbindlich und abhängig von der Einzelfallprüfung durch die zuständige Agentur für Arbeit.</p>
+        <p class="copy">© 2026 — Alle Rechte bei den jeweiligen Partnern.</p>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<!-- ============================ FOOTER ============================ -->
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="site-footer__top">
-      <div class="site-footer__logos">
-        <img src="assets/logo-mh.png" alt="MH-Invelopment">
-        <img src="assets/logo-dj.png" alt="D+J">
-        <span class="wm">TTX Community</span>
-      </div>
-      <nav class="site-footer__nav" aria-label="Rechtliches">
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-    </div>
-    <p class="legal">Kooperationsangebot von MH-Invelopment GmbH, TTX Community, D+J Bildung und D+J Consult. Beim Einsatz von Kamera-, Mikrofon- und Sensorsystemen im Publikumsverkehr informieren wir Besucherinnen, Besucher und Mitarbeitende transparent über Art, Zweck und Dauer der Verarbeitung; Erkennung und Identifizierung von Personen werden strikt unterschieden. Abbildungen zeigen reale Einsatzszenarien. Angaben zu Förderungen nach SGB III sind unverbindlich und abhängig von der Einzelfallprüfung durch die zuständige Agentur für Arbeit.</p>
-    <p class="copy">© 2026 — Alle Rechte bei den jeweiligen Partnern.</p>
-  </div>
-</footer>
+<div class="progressbar" aria-hidden="true"><span id="progressFill"></span></div>
 
 <script src="script.js"></script>
 </body>
