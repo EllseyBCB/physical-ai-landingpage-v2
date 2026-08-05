@@ -276,8 +276,11 @@ body.app { height: 100dvh; overflow: hidden; }
 @keyframes scan { 0%{top:0;opacity:0} 8%{opacity:.95} 50%{top:100%;opacity:.95} 58%{opacity:0} 100%{top:0;opacity:0} }
 @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:.15} }
 
-/* Hero hotspots (reveal real SIEHT/HÖRT/SPRICHT) */
-.hotspot { position: absolute; z-index: 6; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--gold); background: rgba(228,192,107,.12); cursor: pointer; transform: translate(-50%, -50%); padding: 0; }
+/* Hero hotspots (reveal real SIEHT/HÖRT/SPRICHT) — eigene, ungeclippte Ebene
+   ueber .viewport__inner (das clippt das Foto und wuerde sonst auch die Popups
+   abschneiden, siehe Fix vom 5.8.2026). */
+.viewport__hotspots { position: absolute; inset: 10px; z-index: 5; pointer-events: none; transform: translateZ(2px); }
+.hotspot { position: absolute; z-index: 6; pointer-events: auto; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--gold); background: rgba(228,192,107,.12); cursor: pointer; transform: translate(-50%, -50%); padding: 0; }
 .hotspot::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 1px solid rgba(228,192,107,.5); animation: ping 2.4s ease-out infinite; }
 .hotspot .dot { position: absolute; inset: 0; margin: auto; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
 .hotspot__pop { position: absolute; left: 50%; bottom: calc(100% + 12px); transform: translateX(-50%) translateY(6px); width: 220px; background: var(--card); border: 1px solid var(--gold-2); border-radius: var(--radius); padding: 14px; opacity: 0; visibility: hidden; transition: opacity .2s ease, transform .2s ease; box-shadow: var(--shadow); text-align: left; z-index: 7; }
