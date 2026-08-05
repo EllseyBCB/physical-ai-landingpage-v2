@@ -248,7 +248,10 @@ body.app { height: 100dvh; overflow: hidden; }
 .btn:hover .arw { transform: translateX(3px); }
 
 /* ---- HERO ------------------------------------------------------------- */
-.hero__grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) min(32vw, 420px); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.hero__copy { min-width: 0; }
+.hero__viz { width: 100%; }
+.viewport-wrap { width: 100%; }
 .hero h1 { font-size: clamp(32px, 5vw, 58px); margin-top: 18px; letter-spacing: -0.03em; }
 .hero h1 .hl { color: var(--gold); }
 .hero__sub { margin-top: 22px; font-size: clamp(15px, 1.6vw, 18px); color: var(--ink-2); max-width: 52ch; }
