@@ -199,7 +199,7 @@ body.app { height: 100dvh; overflow: hidden; }
 
 .panel__inner {
   width: 100%; max-width: var(--maxw); margin-inline: auto; min-height: 100%;
-  display: flex; flex-direction: column; justify-content: center;
+  display: flex; flex-direction: column; justify-content: safe center;
   padding: clamp(28px, 4vw, 56px) var(--gutter);
 }
 
